@@ -1,4 +1,4 @@
-from model.Direction import Direction
+from model.direction import Direction
 
 
 class Board(object):
