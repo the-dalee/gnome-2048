@@ -35,32 +35,32 @@ class Board(object):
         self.remove(old_position)
         self.add(new_position, tile)
 
-    def next_by_condition(self, position, direction, condition):
+    def next_by_predicate(self, position, direction, predicate):
         candidate = None
         if direction == Direction.Right:
             for i in range(position[0], self.width):
-                if condition([(i, position[1])]):
+                if predicate([(i, position[1])]):
                     candidate = (i, position[1])
 
         if direction == Direction.Left:
             for i in range(self.width, position[0], -1):
-                if condition([(i, position[1])]):
+                if predicate([(i, position[1])]):
                     candidate = (i, position[1])
 
         if direction == Direction.Bottom:
             for i in range(position[1], self.height):
-                if condition(self.tiles[(position[0], i)]):
+                if predicate(self.tiles[(position[0], i)]):
                     candidate = (position[0, i])
 
         if direction == Direction.Top:
             for i in range(self.height, position[1], -1):
-                if condition(self.tiles[(position[0], i)]):
+                if predicate(self.tiles[(position[0], i)]):
                     candidate = (position[0, i])
 
         return candidate
 
     def next_free(self, position, direction):
-        return self.next_by_condition(position, direction, lambda x: x == None)
+        return self.next_by_predicate(position, direction, lambda x: x == None)
 
     def next_full(self, position, direction):
-        return self.next_by_condition(position, direction, lambda x: x != None)
+        return self.next_by_predicate(position, direction, lambda x: x != None)
