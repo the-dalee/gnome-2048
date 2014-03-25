@@ -1,6 +1,8 @@
 from model.board import Board
 from model.game_state import GameState
 from model.direction import Direction
+from random import Random
+from model.tile import Tile
 
 
 class GameEngine(object):
@@ -61,3 +63,16 @@ class GameEngine(object):
                     if next_empty is not None:
                         self.board.move(coord, next_empty)
 
+    def spawn(self):
+        w = self.board.width
+        h = self.board.height
+        coords = [(x, y) for x in range(w) for y in range(h)]
+        possible_cords = []
+        for coord in coords:
+            if self.board.tiles[coord] is None:
+                possible_cords.append(coord)
+
+        if possible_cords:
+            random = Random()
+            spawn_point = random.choice(possible_cords)
+            self.board.add(spawn_point, Tile(2))
