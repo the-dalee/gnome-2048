@@ -47,12 +47,12 @@ class Board(object):
                 if predicate([(i, position[1])]):
                     candidate = (i, position[1])
 
-        if direction == Direction.Bottom:
+        if direction == Direction.Up:
             for i in range(position[1], self.height):
                 if predicate(self.tiles[(position[0], i)]):
                     candidate = (position[0, i])
 
-        if direction == Direction.Top:
+        if direction == Direction.Down:
             for i in range(self.height, position[1], -1):
                 if predicate(self.tiles[(position[0], i)]):
                     candidate = (position[0, i])
