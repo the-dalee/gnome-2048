@@ -76,7 +76,7 @@ class AddTile(BoardTile):
         self.tile = tile
         self.board = board
 
-        descriptionText = "add tile %(val)i at (%(x)i, %(y)i)"
+        descriptionText = "Add tile %(val)i at (%(x)i, %(y)i)"
         self.description = descriptionText % {
                     "x": position[0],
                     "y": position[1],
