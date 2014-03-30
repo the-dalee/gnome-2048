@@ -56,7 +56,7 @@ class GameEngine(object):
             if tile is not None:
                 next_full = self.board.next_full(coord, direction)
                 if (next_full is not None) and (self.board.tiles[next_full].value == tile.value):
-                    next_full.merge(tile)
+                    self.board.tiles[next_full].merge(tile)
                     self.board.remove(coord)
                 else:
                     next_empty = self.board.next_free(coord, direction)
