@@ -7,8 +7,8 @@ class Board(object):
     def __init__(self, width=4, height=4):
         self.width = width
         self.height = height
-        for x in self.width:
-            for y in self.height:
+        for x in range(self.width):
+            for y in range(self.height):
                 self.tiles[(x, y)] = None
 
     def is_full(self):
@@ -39,28 +39,28 @@ class Board(object):
         candidate = None
         if direction == Direction.Right:
             for i in range(position[0], self.width):
-                if predicate([(i, position[1])]):
+                if predicate((i, position[1])):
                     candidate = (i, position[1])
 
         if direction == Direction.Left:
-            for i in range(self.width, position[0], -1):
-                if predicate([(i, position[1])]):
+            for i in range(self.width - 1, position[0] - 1, -1):
+                if predicate((i, position[1] - 1)):
                     candidate = (i, position[1])
 
         if direction == Direction.Up:
-            for i in range(position[1], self.height):
-                if predicate(self.tiles[(position[0], i)]):
-                    candidate = (position[0, i])
+            for i in range(position[1] - 1, self.height):
+                if predicate((position[0], i)):
+                    candidate = (position[0], i)
 
         if direction == Direction.Down:
-            for i in range(self.height, position[1], -1):
-                if predicate(self.tiles[(position[0], i)]):
-                    candidate = (position[0, i])
+            for i in range(self.height - 1 , position[1] - 1, -1):
+                if predicate((position[0], i)):
+                    candidate = (position[0], i)
 
         return candidate
 
     def next_free(self, position, direction):
-        return self.next_by_predicate(position, direction, lambda x: x == None)
+        return self.next_by_predicate(position, direction, lambda x: self.tiles[x] == None)
 
     def next_full(self, position, direction):
-        return self.next_by_predicate(position, direction, lambda x: x != None)
+        return self.next_by_predicate(position, direction, lambda x: self.tiles[x] != None)
