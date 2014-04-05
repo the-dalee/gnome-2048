@@ -58,7 +58,7 @@ class Board(object):
                     candidate = (position[0], i)
 
         return candidate
-    
+
     def last_by_predicate(self, position, direction, predicate):
         candidate = None
         if direction == Direction.Right:
