@@ -3,11 +3,33 @@ from model.game_state import GameState
 from model.direction import Direction
 from random import Random
 from model.tile import Tile
+from model.commands.board import AddTile, MoveTile
 
 
 class GameEngine(object):
+    undo_stack = []
+    redo_stack = []
+
     def __init__(self):
         self.restart()
+        self.undo_stack = list()
+        self.redo_stack = list()
+
+    def execute(self, command):
+        self.redo_stack.clear()
+        command.execute()
+        self.undo_stack.append(command)
+        print("Executing: " + command.description)
+
+    def undo(self):
+        command = self.undo_stack.pop()
+        command.undo()
+        self.redo_stack.append(command)
+
+    def redo(self):
+        command = self.redo_stack.pop()
+        command.execute()
+        self.undo_stack.append(command)
 
     def restart(self):
         self.board = Board()
@@ -61,7 +83,8 @@ class GameEngine(object):
                 else:
                     next_empty = self.board.next_free(coord, direction)
                     if next_empty is not None:
-                        self.board.move(coord, next_empty)
+                        move_command = MoveTile(self.board, coord, next_empty)
+                        self.execute(move_command)
 
     def spawn(self):
         w = self.board.width
@@ -75,4 +98,5 @@ class GameEngine(object):
         if possible_cords:
             random = Random()
             spawn_point = random.choice(possible_cords)
-            self.board.add(spawn_point, Tile(2))
+            command = AddTile(self.board, spawn_point, Tile(2))
+            self.execute(command)
