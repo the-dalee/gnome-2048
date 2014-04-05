@@ -53,7 +53,7 @@ class Board(object):
                     candidate = (position[0], i)
 
         if direction == Direction.Down:
-            for i in range(self.height - 1 , position[1] - 2, -1):
+            for i in range(self.height - 1, position[1] - 2, -1):
                 if predicate((position[0], i)):
                     candidate = (position[0], i)
 
@@ -77,7 +77,7 @@ class Board(object):
                     candidate = (position[0], i)
 
         if direction == Direction.Down:
-            for i in range(self.height - 1 , position[1] - 2, -1):
+            for i in range(self.height - 1, position[1] - 2, -1):
                 if predicate((position[0], i)):
                     candidate = (position[0], i)
 
