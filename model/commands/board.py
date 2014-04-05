@@ -29,10 +29,10 @@ class MoveTile(BoardTile):
                 }
 
     def execute(self):
-        self.board.move(self, self.source, self.destination)
+        self.board.move(self.source, self.destination)
 
     def undo(self):
-        self.board.move(self, self.destination, self.source)
+        self.board.move(self.destination, self.source)
 
 
 class MergeTile(BoardTile):
