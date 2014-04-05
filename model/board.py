@@ -88,3 +88,13 @@ class Board(object):
 
     def next_full(self, position, direction):
         return self.next_by_predicate(position, direction, lambda x: self.tiles[x] != None)
+
+    def get_empty_tiles(self):
+        w = self.width
+        h = self.height
+        coords = [(x, y) for x in range(w) for y in range(h)]
+        possible_cords = list()
+        for coord in coords:
+            if self.tiles[coord] is None:
+                possible_cords.append(coord)
+        return possible_cords
