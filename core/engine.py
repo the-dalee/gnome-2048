@@ -4,6 +4,7 @@ from model.direction import Direction
 from random import Random
 from model.tile import Tile
 from model.commands.board import AddTile, MoveTile
+from model.jobs.job import Job
 
 
 class GameEngine(object):
@@ -15,27 +16,33 @@ class GameEngine(object):
         self.undo_stack = list()
         self.redo_stack = list()
 
-    def execute(self, command):
+    def execute(self, job):
         self.redo_stack.clear()
-        command.execute()
-        self.undo_stack.append(command)
-        print("Executing: " + command.description)
+        job.execute()
+        self.undo_stack.append(job)
+        print("Executing: ")
+        for command in job.commands:
+            print("  * " + command.description)
 
     def undo(self):
         if self.undo_stack:
-            command = self.undo_stack.pop()
-            command.undo()
-            self.redo_stack.append(command)
-            print("Undoing: " + command.description)
+            job = self.undo_stack.pop()
+            job.undo()
+            self.redo_stack.append(job)
+            print("Undoing: ")
+            for command in job.commands:
+                print("  * " + command.description)
         else:
             print("Undo stack empty")
 
     def redo(self):
         if self.redo_stack:
-            command = self.redo_stack.pop()
-            command.execute()
-            self.undo_stack.append(command)
-            print("Redoing: " + command.description)
+            job = self.redo_stack.pop()
+            job.execute()
+            self.undo_stack.append(job)
+            print("Redoing: ")
+            for command in job.commands:
+                print("  * " + command.description)
         else:
             print("Redo stack empty")
 
@@ -91,10 +98,19 @@ class GameEngine(object):
                 else:
                     next_empty = self.board.next_free(coord, direction)
                     if next_empty is not None:
+                        job = Job()
                         move_command = MoveTile(self.board, coord, next_empty)
-                        self.execute(move_command)
+                        job.add_commmand(move_command)
+                        job.add_commmand(self.get_spawn_command())
+                        self.execute(job)
 
-    def spawn(self):
+    def start(self):
+        job = Job()
+        job.add_commmand(self.get_spawn_command())
+        job.add_commmand(self.get_spawn_command())
+        self.execute(job)
+
+    def get_spawn_command(self):
         w = self.board.width
         h = self.board.height
         coords = [(x, y) for x in range(w) for y in range(h)]
@@ -107,4 +123,5 @@ class GameEngine(object):
             random = Random()
             spawn_point = random.choice(possible_cords)
             command = AddTile(self.board, spawn_point, Tile(2))
-            self.execute(command)
+            return command
+        return None

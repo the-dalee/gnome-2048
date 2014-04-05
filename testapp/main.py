@@ -3,22 +3,17 @@ from model.direction import Direction
 
 def main_func():
     engine = GameEngine()
-    engine.spawn()
-    engine.spawn()
+    engine.start()
     command = ""
     while command != "exit":
         if command == "left":
             engine.move(Direction.Left)
-            engine.spawn()
         if command == "right":
             engine.move(Direction.Right)
-            engine.spawn()
         if command == "up":
             engine.move(Direction.Up)
-            engine.spawn()
         if command == "down":
             engine.move(Direction.Down)
-            engine.spawn()
         if command == "undo":
             engine.undo()
         if command == "redo":

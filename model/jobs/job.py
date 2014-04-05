@@ -1,11 +1,15 @@
 class Job(object):
     commands = []
 
-    def __init__(self, commands):
-        self.commands = list(commands)
+    def __init__(self, commands=None):
+        if commands is None:
+            self.commands = list()
+        else:
+            self.commands = list(commands)
 
     def add_commmand(self, command):
-        self.commands.append(command)
+        if command is not None:
+            self.commands.append(command)
 
     def execute(self):
         for command in self.commands:
