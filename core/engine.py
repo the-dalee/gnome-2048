@@ -22,14 +22,22 @@ class GameEngine(object):
         print("Executing: " + command.description)
 
     def undo(self):
-        command = self.undo_stack.pop()
-        command.undo()
-        self.redo_stack.append(command)
+        if self.undo_stack:
+            command = self.undo_stack.pop()
+            command.undo()
+            self.redo_stack.append(command)
+            print("Undoing: " + command.description)
+        else:
+            print("Undo stack empty")
 
     def redo(self):
-        command = self.redo_stack.pop()
-        command.execute()
-        self.undo_stack.append(command)
+        if self.redo_stack:
+            command = self.redo_stack.pop()
+            command.execute()
+            self.undo_stack.append(command)
+            print("Redoing: " + command.description)
+        else:
+            print("Redo stack empty")
 
     def restart(self):
         self.board = Board()

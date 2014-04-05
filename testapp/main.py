@@ -5,7 +5,6 @@ def main_func():
     engine = GameEngine()
     engine.spawn()
     engine.spawn()
-    
     command = ""
     while command != "exit":
         if command == "left":
@@ -20,6 +19,10 @@ def main_func():
         if command == "down":
             engine.move(Direction.Down)
             engine.spawn()
+        if command == "undo":
+            engine.undo()
+        if command == "redo":
+            engine.redo()
         print_board(engine.board)
         command = input("> ")
 

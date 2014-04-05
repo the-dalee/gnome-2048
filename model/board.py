@@ -43,7 +43,7 @@ class Board(object):
                     candidate = (i, position[1])
 
         if direction == Direction.Left:
-            for i in range(self.width - 1, position[0] - 1, -1):
+            for i in range(self.width - 1, position[0] - 2, -1):
                 if predicate((i, position[1] - 1)):
                     candidate = (i, position[1])
 
@@ -53,14 +53,38 @@ class Board(object):
                     candidate = (position[0], i)
 
         if direction == Direction.Down:
-            for i in range(self.height - 1 , position[1] - 1, -1):
+            for i in range(self.height - 1 , position[1] - 2, -1):
+                if predicate((position[0], i)):
+                    candidate = (position[0], i)
+
+        return candidate
+    
+    def last_by_predicate(self, position, direction, predicate):
+        candidate = None
+        if direction == Direction.Right:
+            for i in range(self.width - 1, position[0], -1):
+                if predicate((i, position[1])):
+                    candidate = (i, position[1])
+
+        if direction == Direction.Left:
+            for i in range(0, position[0] - 2):
+                if predicate((i, position[1] - 1)):
+                    candidate = (i, position[1])
+
+        if direction == Direction.Up:
+            for i in range(0, position[1] - 1):
+                if predicate((position[0], i)):
+                    candidate = (position[0], i)
+
+        if direction == Direction.Down:
+            for i in range(self.height - 1 , position[1] - 2, -1):
                 if predicate((position[0], i)):
                     candidate = (position[0], i)
 
         return candidate
 
     def next_free(self, position, direction):
-        return self.next_by_predicate(position, direction, lambda x: self.tiles[x] == None)
+        return self.last_by_predicate(position, direction, lambda x: self.tiles[x] == None)
 
     def next_full(self, position, direction):
         return self.next_by_predicate(position, direction, lambda x: self.tiles[x] != None)
