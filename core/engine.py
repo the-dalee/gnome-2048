@@ -101,27 +101,23 @@ class GameEngine(object):
                         job = Job()
                         move_command = MoveTile(self.board, coord, next_empty)
                         job.add_commmand(move_command)
-                        job.add_commmand(self.get_spawn_command())
+                        empty_tiles = self.board.get_empty_tiles() 
+                        if empty_tiles:
+                            random = Random()
+                            first_empty = random.choice(empty_tiles)
+                            add_cmd = AddTile(self.board, first_empty, Tile(2))
+                            job.add_commmand(add_cmd)
                         self.execute(job)
 
     def start(self):
         job = Job()
-        job.add_commmand(self.get_spawn_command())
-        job.add_commmand(self.get_spawn_command())
+        random = Random()
+        empty_tiles = self.board.get_empty_tiles()
+        if empty_tiles:
+            first_empty = random.choice(empty_tiles)
+            job.add_commmand(AddTile(self.board, first_empty, Tile(2)))
+            empty_tiles.remove(first_empty)
+        if empty_tiles:
+            second_empty = random.choice(empty_tiles)
+            job.add_commmand(AddTile(self.board, second_empty, Tile(2)))
         self.execute(job)
-
-    def get_spawn_command(self):
-        w = self.board.width
-        h = self.board.height
-        coords = [(x, y) for x in range(w) for y in range(h)]
-        possible_cords = []
-        for coord in coords:
-            if self.board.tiles[coord] is None:
-                possible_cords.append(coord)
-
-        if possible_cords:
-            random = Random()
-            spawn_point = random.choice(possible_cords)
-            command = AddTile(self.board, spawn_point, Tile(2))
-            return command
-        return None
