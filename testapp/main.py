@@ -8,7 +8,6 @@ def main_func():
     
     command = ""
     while command != "exit":
-        print_board(engine.board)
         if command == "left":
             engine.move(Direction.Left)
             engine.spawn()
@@ -21,6 +20,7 @@ def main_func():
         if command == "down":
             engine.move(Direction.Down)
             engine.spawn()
+        print_board(engine.board)
         command = input("> ")
 
 
