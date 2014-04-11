@@ -61,6 +61,8 @@ class GameEngine(object):
             coords = [(x, y) for x in range(w) for y in range(h - 1, -1, -1)]
 
         job = Job()
+        moved = False
+
         for coord in coords:
             tile = self.board.tiles[coord]
             if tile is not None:
@@ -71,28 +73,31 @@ class GameEngine(object):
                     merge_command = MergeTile(self.board, coord, next_full)
                     merge_command.execute()
                     job.add_commmand(merge_command)
+                    moved = True
                 else:
                     next_empty = self.board.next_free(coord, direction)
                     if next_empty is not None:
                         move_command = MoveTile(self.board, coord, next_empty)
                         move_command.execute()
                         job.add_commmand(move_command)
+                        moved = True
 
-        empty_tiles = self.board.get_empty_tiles() 
-        if empty_tiles:
-            random = Random()
-            first_empty = random.choice(empty_tiles)
-            add_cmd = AddTile(self.board, first_empty, Tile(2))
-            add_cmd.execute()
-            job.add_commmand(add_cmd)
+        if moved:
+            empty_tiles = self.board.get_empty_tiles()
+            if empty_tiles:
+                random = Random()
+                first_empty = random.choice(empty_tiles)
+                add_cmd = AddTile(self.board, first_empty, Tile(2))
+                add_cmd.execute()
+                job.add_commmand(add_cmd)
 
-        new_state = self.get_new_state()
-        set_state_command = SetState(self, new_state)
-        set_state_command.execute()
-        job.add_commmand(set_state_command)
+            new_state = self.get_new_state()
+            set_state_command = SetState(self, new_state)
+            set_state_command.execute()
+            job.add_commmand(set_state_command)
 
-        self.execute(job)
-        self.board.unmark_merged_all()
+            self.execute(job)
+            self.board.unmark_merged_all()
 
     def start(self):
         random = Random()
