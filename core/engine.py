@@ -17,19 +17,12 @@ class GameEngine(object):
         self.redo_stack = list()
 
     def execute(self, job):
-        print("Executing: ")
-        for command in job.commands:
-            print("  * " + command.description)
         self.undo_stack.append(job)
         self.redo_stack.clear()
-        job.execute()
 
     def undo(self):
         if self.undo_stack:
             job = self.undo_stack.pop()
-            print("Undoing: ")
-            for command in job.commands:
-                print("  * " + command.description)
             job.undo()
             self.redo_stack.append(job)
         else:
@@ -40,9 +33,6 @@ class GameEngine(object):
             job = self.redo_stack.pop()
             job.execute()
             self.undo_stack.append(job)
-            print("Redoing: ")
-            for command in job.commands:
-                print("  * " + command.description)
         else:
             print("Redo stack empty")
 
@@ -95,11 +85,13 @@ class GameEngine(object):
                 next_full = self.board.next_full(coord, direction)
                 if (next_full is not None) and (self.board.tiles[next_full].value == tile.value): 
                     merge_command = MergeTile(self.board, coord, next_full)
+                    merge_command.execute()
                     job.add_commmand(merge_command)
                 else:
                     next_empty = self.board.next_free(coord, direction)
                     if next_empty is not None:
                         move_command = MoveTile(self.board, coord, next_empty)
+                        move_command.execute()
                         job.add_commmand(move_command)
 
         empty_tiles = self.board.get_empty_tiles() 
@@ -107,6 +99,7 @@ class GameEngine(object):
             random = Random()
             first_empty = random.choice(empty_tiles)
             add_cmd = AddTile(self.board, first_empty, Tile(2))
+            add_cmd.execute()
             job.add_commmand(add_cmd)
 
         self.execute(job)
@@ -117,9 +110,13 @@ class GameEngine(object):
         empty_tiles = self.board.get_empty_tiles()
         if empty_tiles:
             first_empty = random.choice(empty_tiles)
-            job.add_commmand(AddTile(self.board, first_empty, Tile(2)))
+            add_first = AddTile(self.board, first_empty, Tile(2))
+            add_first.execute()
+            job.add_commmand(add_first)
             empty_tiles.remove(first_empty)
         if empty_tiles:
             second_empty = random.choice(empty_tiles)
-            job.add_commmand(AddTile(self.board, second_empty, Tile(2)))
+            add_second = AddTile(self.board, second_empty, Tile(2))
+            add_second.execute()
+            job.add_commmand(add_second)
         self.execute(job)
