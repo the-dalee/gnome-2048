@@ -1,9 +1,12 @@
 from core.engine import GameEngine
 from model.direction import Direction
+from model.game_state import GameState
+from model.tile import Tile
 
 def main_func():
     engine = GameEngine()
     engine.start()
+
     command = ""
     while command != "exit":
         if command == "left":
@@ -18,6 +21,16 @@ def main_func():
             engine.undo()
         if command == "redo":
             engine.redo()
+
+        if engine.state == GameState.InProgress:
+            print("Game in progress")
+        if engine.state == GameState.Pending:
+            print("Game pending")
+        if engine.state == GameState.Lost:
+            print("Game over")
+        if engine.state == GameState.Won:
+            print("You won")
+
         print_board(engine.board)
         command = input("> ")
 

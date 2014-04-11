@@ -5,11 +5,13 @@ from random import Random
 from model.tile import Tile
 from model.commands.board import AddTile, MoveTile, MergeTile
 from model.jobs.job import Job
+from model.commands.engine import SetState
 
 
 class GameEngine(object):
     undo_stack = []
     redo_stack = []
+    state = None
 
     def __init__(self):
         self.restart()
@@ -41,31 +43,11 @@ class GameEngine(object):
         self.state = GameState.Pending
         self.points = 0
 
-    def is_game_over(self):
-        if not self.board.is_full():
-            return False
-        for x in range(self.board.width):
-            for y in range(self.board.height):
-                tile = self.board.tiles[(x, y)]
-                next_coord = self.board.next_full((x, y), Direction.Right)
-                if next_coord is not None:
-                    if self.board.tiles[next_coord].value == tile.value:
-                        return False
-                next_coord = self.board.next_full((x, y), Direction.Left)
-                if next_coord is not None:
-                    if self.board.tiles[next_coord].value == tile.value:
-                        return False
-                next_coord = self.board.next_full((x, y), Direction.Up)
-                if next_coord is not None:
-                    if self.board.tiles[next_coord].value == tile.value:
-                        return False
-                next_coord = self.board.next_full((x, y), Direction.Down)
-                if next_coord is not None:
-                    if self.board.tiles[next_coord].value == tile.value:
-                        return False
-        return True
-
     def move(self, direction):
+        if (not (self.state == GameState.Pending
+            or self.state == GameState.InProgress)):
+            raise Exception("The game is over")
+
         coords = []
         w = self.board.width
         h = self.board.height
@@ -104,6 +86,11 @@ class GameEngine(object):
             add_cmd.execute()
             job.add_commmand(add_cmd)
 
+        new_state = self.get_new_state()
+        set_state_command = SetState(self, new_state)
+        set_state_command.execute()
+        job.add_commmand(set_state_command)
+
         self.execute(job)
         self.board.unmark_merged_all()
 
@@ -123,3 +110,45 @@ class GameEngine(object):
             add_second.execute()
             job.add_commmand(add_second)
         self.execute(job)
+
+    def is_game_over(self):
+        if not self.board.is_full():
+            return False
+        for x in range(self.board.width):
+            for y in range(self.board.height):
+                tile = self.board.tiles[(x, y)]
+                next_coord = self.board.next_full((x, y), Direction.Right)
+                if next_coord is not None:
+                    if self.board.tiles[next_coord].value == tile.value:
+                        return False
+                next_coord = self.board.next_full((x, y), Direction.Left)
+                if next_coord is not None:
+                    if self.board.tiles[next_coord].value == tile.value:
+                        return False
+                next_coord = self.board.next_full((x, y), Direction.Up)
+                if next_coord is not None:
+                    if self.board.tiles[next_coord].value == tile.value:
+                        return False
+                next_coord = self.board.next_full((x, y), Direction.Down)
+                if next_coord is not None:
+                    if self.board.tiles[next_coord].value == tile.value:
+                        return False
+        return True
+
+    def get_new_state(self):
+        if self.state == GameState.Lost:
+            return GameState.Lost
+        if self.state == GameState.Won:
+            return GameState.Won
+        if self.state == GameState.Aborted:
+            return GameState.Aborted
+
+        for coord in self.board.tiles:
+            tile = self.board.tiles[coord]
+            if tile is not None and tile.value == 2048:
+                return GameState.Won
+
+        if self.is_game_over():
+            return GameState.Lost
+
+        return GameState.InProgress

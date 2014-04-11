@@ -17,10 +17,9 @@ class Board(object):
                 self.tiles[coord].already_merged = False
 
     def is_full(self):
-        for x in self.width:
-            for y in self.height:
-                if self.tiles[(x, y)] == None:
-                    return False
+        for coords in self.tiles:
+            if self.tiles[coords] == None:
+                return False
         return True
 
     def add(self, position, tile):
