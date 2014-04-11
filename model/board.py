@@ -21,6 +21,7 @@ class Board(object):
     def add(self, position, tile):
         if self.tiles[position] != None:
             raise Exception("The slot with this position "
+                            + str(position) + " "
                             + "contains already a tile")
         self.tiles[position] = tile
 
@@ -38,24 +39,24 @@ class Board(object):
     def next_by_predicate(self, position, direction, predicate):
         candidate = None
         if direction == Direction.Right:
-            for i in range(position[0], self.width):
+            for i in range(position[0] + 1, self.width):
                 if predicate((i, position[1])):
-                    candidate = (i, position[1])
+                    return (i, position[1])
 
         if direction == Direction.Left:
-            for i in range(self.width - 1, position[0] - 2, -1):
-                if predicate((i, position[1] - 1)):
-                    candidate = (i, position[1])
+            for i in range(position[0] - 1, -1, -1):
+                if predicate((i, position[1])):
+                    return (i, position[1])
 
         if direction == Direction.Up:
-            for i in range(position[1] - 1, self.height):
+            for i in range(position[1] - 1, -1, -1):
                 if predicate((position[0], i)):
-                    candidate = (position[0], i)
+                    return (position[0], i)
 
         if direction == Direction.Down:
-            for i in range(self.height - 1, position[1] - 2, -1):
+            for i in range(position[1] + 1, self.height):
                 if predicate((position[0], i)):
-                    candidate = (position[0], i)
+                    return (position[0], i)
 
         return candidate
 
@@ -64,22 +65,22 @@ class Board(object):
         if direction == Direction.Right:
             for i in range(self.width - 1, position[0], -1):
                 if predicate((i, position[1])):
-                    candidate = (i, position[1])
+                    return (i, position[1])
 
         if direction == Direction.Left:
-            for i in range(0, position[0] - 2):
-                if predicate((i, position[1] - 1)):
-                    candidate = (i, position[1])
+            for i in range(0, position[0]):
+                if predicate((i, position[1])):
+                    return (i, position[1])
 
         if direction == Direction.Up:
-            for i in range(0, position[1] - 1):
+            for i in range(0, position[1]):
                 if predicate((position[0], i)):
-                    candidate = (position[0], i)
+                    return (position[0], i)
 
         if direction == Direction.Down:
-            for i in range(self.height - 1, position[1] - 2, -1):
+            for i in range(self.height - 1, position[1], -1):
                 if predicate((position[0], i)):
-                    candidate = (position[0], i)
+                    return (position[0], i)
 
         return candidate
 
