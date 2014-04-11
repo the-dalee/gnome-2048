@@ -11,6 +11,11 @@ class Board(object):
             for y in range(self.height):
                 self.tiles[(x, y)] = None
 
+    def unmark_merged_all(self):
+        for coord in self.tiles:
+            if self.tiles[coord] is not None:
+                self.tiles[coord].already_merged = False
+
     def is_full(self):
         for x in self.width:
             for y in self.height:

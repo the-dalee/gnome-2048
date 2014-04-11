@@ -58,6 +58,7 @@ class MergeTile(BoardTile):
                 }
 
     def execute(self):
+        self.destinationTile.already_merged = True
         self.destinationTile.merge(self.sourceTile)
         self.board.remove(self.source)
 

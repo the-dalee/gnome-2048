@@ -83,7 +83,9 @@ class GameEngine(object):
             tile = self.board.tiles[coord]
             if tile is not None:
                 next_full = self.board.next_full(coord, direction)
-                if (next_full is not None) and (self.board.tiles[next_full].value == tile.value): 
+                if (next_full is not None
+                and self.board.tiles[next_full].value == tile.value
+                and not self.board.tiles[next_full].already_merged):
                     merge_command = MergeTile(self.board, coord, next_full)
                     merge_command.execute()
                     job.add_commmand(merge_command)
@@ -103,6 +105,7 @@ class GameEngine(object):
             job.add_commmand(add_cmd)
 
         self.execute(job)
+        self.board.unmark_merged_all()
 
     def start(self):
         job = Job()
