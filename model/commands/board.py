@@ -63,7 +63,7 @@ class MergeTile(BoardTile):
         self.board.remove(self.source)
 
     def undo(self):
-        self.destinationTile.value = self.destinationTile.value / 2
+        self.destinationTile.value = int(self.destinationTile.value / 2)
         self.board.add(self.source, self.sourceTile)
 
 
