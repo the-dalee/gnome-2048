@@ -95,21 +95,17 @@ class GameEngine(object):
         self.board.unmark_merged_all()
 
     def start(self):
-        job = Job()
         random = Random()
         empty_tiles = self.board.get_empty_tiles()
         if empty_tiles:
             first_empty = random.choice(empty_tiles)
             add_first = AddTile(self.board, first_empty, Tile(2))
             add_first.execute()
-            job.add_commmand(add_first)
             empty_tiles.remove(first_empty)
         if empty_tiles:
             second_empty = random.choice(empty_tiles)
             add_second = AddTile(self.board, second_empty, Tile(2))
             add_second.execute()
-            job.add_commmand(add_second)
-        self.execute(job)
 
     def is_game_over(self):
         if not self.board.is_full():
