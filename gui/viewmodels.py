@@ -53,3 +53,6 @@ class GameViewModel(object):
 
     def move_tile(self, sx, sy, dx, dy):
         pass
+
+    def overwrite_board(self, board):
+        pass
