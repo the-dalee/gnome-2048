@@ -87,7 +87,8 @@ class GameEngine(object):
             if empty_tiles:
                 random = Random()
                 first_empty = random.choice(empty_tiles)
-                add_cmd = AddTile(self.board, first_empty, Tile(2))
+                tile = self.create_random_tile()
+                add_cmd = AddTile(self.board, first_empty, tile)
                 add_cmd.execute()
                 job.add_commmand(add_cmd)
 
@@ -104,12 +105,14 @@ class GameEngine(object):
         empty_tiles = self.board.get_empty_tiles()
         if empty_tiles:
             first_empty = random.choice(empty_tiles)
-            add_first = AddTile(self.board, first_empty, Tile(2))
+            tile = self.create_random_tile()
+            add_first = AddTile(self.board, first_empty, tile)
             add_first.execute()
             empty_tiles.remove(first_empty)
         if empty_tiles:
             second_empty = random.choice(empty_tiles)
-            add_second = AddTile(self.board, second_empty, Tile(2))
+            tile = self.create_random_tile()
+            add_second = AddTile(self.board, second_empty, tile)
             add_second.execute()
 
     def is_game_over(self):
@@ -153,3 +156,11 @@ class GameEngine(object):
             return GameState.Lost
 
         return GameState.InProgress
+
+    def create_random_tile(self):
+        random = Random()
+        x = random.randint(0, 100)
+        if x < 85:
+            return Tile(2)
+        else:
+            return Tile(4)
