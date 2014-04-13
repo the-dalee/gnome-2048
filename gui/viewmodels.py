@@ -41,3 +41,15 @@ class GameViewModel(object):
 
     def notify_reset(self):
         self.notify_all(self.reset_observers)
+
+    def add_tile(self, x, y, value):
+        pass
+
+    def remove_tile(self, x, y):
+        pass
+
+    def set_tile_value(self, x, y, value):
+        pass
+
+    def move_tile(self, sx, sy, dx, dy):
+        pass
