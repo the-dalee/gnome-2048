@@ -9,6 +9,7 @@ from core.model.commands.engine import SetState
 
 
 class GameEngine(object):
+    command_observers = []
     undo_stack = []
     redo_stack = []
     state = None
@@ -17,6 +18,15 @@ class GameEngine(object):
         self.restart()
         self.undo_stack = list()
         self.redo_stack = list()
+        self.command_observers = list()
+
+    def register(self, observer):
+        self.command_observers.append(observer)
+
+    def execute_command(self, command):
+        command.execute()
+        for observer in self.command_observers:
+            observer.notify_command(command)
 
     def execute(self, job):
         self.undo_stack.append(job)
@@ -71,14 +81,14 @@ class GameEngine(object):
                 and self.board.tiles[next_full].value == tile.value
                 and not self.board.tiles[next_full].already_merged):
                     merge_command = MergeTile(self.board, coord, next_full)
-                    merge_command.execute()
+                    self.execute_command(merge_command)
                     job.add_commmand(merge_command)
                     moved = True
                 else:
                     next_empty = self.board.next_free(coord, direction)
                     if next_empty is not None:
                         move_command = MoveTile(self.board, coord, next_empty)
-                        move_command.execute()
+                        self.execute_command(move_command)
                         job.add_commmand(move_command)
                         moved = True
 
@@ -89,12 +99,12 @@ class GameEngine(object):
                 first_empty = random.choice(empty_tiles)
                 tile = self.create_random_tile()
                 add_cmd = AddTile(self.board, first_empty, tile)
-                add_cmd.execute()
+                self.execute_command(add_cmd)
                 job.add_commmand(add_cmd)
 
             new_state = self.get_new_state()
             set_state_command = SetState(self, new_state)
-            set_state_command.execute()
+            self.execute_command(set_state_command)
             job.add_commmand(set_state_command)
 
             self.execute(job)
@@ -107,13 +117,13 @@ class GameEngine(object):
             first_empty = random.choice(empty_tiles)
             tile = self.create_random_tile()
             add_first = AddTile(self.board, first_empty, tile)
-            add_first.execute()
+            self.execute_command(add_first)
             empty_tiles.remove(first_empty)
         if empty_tiles:
             second_empty = random.choice(empty_tiles)
             tile = self.create_random_tile()
             add_second = AddTile(self.board, second_empty, tile)
-            add_second.execute()
+            self.execute_command(add_second)
 
     def is_game_over(self):
         if not self.board.is_full():
