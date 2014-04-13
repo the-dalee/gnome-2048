@@ -1,12 +1,12 @@
 from core.engine import GameEngine
-from model.direction import Direction
-from model.game_state import GameState
-from model.tile import Tile
+from core.model.direction import Direction
+from core.model.game_state import GameState
+from core.model.tile import Tile
 
 def main_func():
     engine = GameEngine()
     engine.start()
-
+    
     command = ""
     while command != "exit":
         if command == "left":

@@ -1,11 +1,11 @@
-from model.board import Board
-from model.game_state import GameState
-from model.direction import Direction
+from core.model.board import Board
+from core.model.game_state import GameState
+from core.model.direction import Direction
 from random import Random
-from model.tile import Tile
-from model.commands.board import AddTile, MoveTile, MergeTile
-from model.jobs.job import Job
-from model.commands.engine import SetState
+from core.model.tile import Tile
+from core.model.commands.board import AddTile, MoveTile, MergeTile
+from core.model.jobs.job import Job
+from core.model.commands.engine import SetState
 
 
 class GameEngine(object):
