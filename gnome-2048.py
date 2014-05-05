@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from testapp import main
+from gui import main
 
 main.main_func()
 
