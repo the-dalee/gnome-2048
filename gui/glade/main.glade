@@ -17,12 +17,13 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkToolButton" id="toolbutton1">
+              <object class="GtkToolButton" id="button_reset">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">toolbutton1</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-new</property>
+                <signal name="clicked" handler="reset_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -40,12 +41,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="toolbutton2">
+              <object class="GtkToolButton" id="button_undo">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">toolbutton2</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-undo</property>
+                <signal name="clicked" handler="undo_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -53,12 +55,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="toolbutton3">
+              <object class="GtkToolButton" id="button_redo">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">toolbutton3</property>
                 <property name="use_underline">True</property>
                 <property name="stock_id">gtk-redo</property>
+                <signal name="clicked" handler="redo_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -107,12 +110,13 @@
               </packing>
             </child>
             <child>
-              <object class="GtkToolButton" id="toolbutton5">
+              <object class="GtkToolButton" id="button_exit">
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
                 <property name="label" translatable="yes">toolbutton5</property>
                 <property name="use_underline">True</property>
                 <property name="icon_name">window-close</property>
+                <signal name="clicked" handler="exit_clicked" swapped="no"/>
               </object>
               <packing>
                 <property name="expand">False</property>
@@ -426,6 +430,9 @@
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
+                </child>
+                <child>
+                  <placeholder/>
                 </child>
                 <child>
                   <placeholder/>

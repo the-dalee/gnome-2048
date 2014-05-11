@@ -7,6 +7,8 @@ class GameController(object):
         self._builder = Gtk.Builder() 
         self._builder.add_from_file("./gui/glade/main.glade")
         self.window = self._builder.get_object("main_window")
+        self.window.connect("destroy", Gtk.main_quit)
+
         self.tile_00 = self._builder.get_object("tile00")
         self.tile_01 = self._builder.get_object("tile01")
         self.tile_02 = self._builder.get_object("tile02")
@@ -29,7 +31,10 @@ class GameController(object):
             "move_down_clicked": self.move_down_clicked,
             "move_left_clicked": self.move_left_clicked,
             "move_right_clicked": self.move_right_clicked,
-
+            "undo_clicked": self.undo_clicked,
+            "redo_clicked": self.redo_clicked,
+            "reset_clicked": self.reset_clicked,
+            "exit_clicked": self.exit_clicked,
             }
         self._builder.connect_signals(handlers)
 
@@ -48,14 +53,21 @@ class GameController(object):
     def move_down_clicked(self, args):
         self.engine.move(Direction.Down)
 
-    def move_undo_clicked(self, args):
+    def undo_clicked(self, args):
         self.engine.undo()
+        self.display_tiles()
 
     def redo_clicked(self, args):
         self.engine.redo()
+        self.display_tiles()
 
     def reset_clicked(self, args):
         self.engine.restart()
+        self.engine.start()
+        self.display_tiles()
+
+    def exit_clicked(self, args):
+        self.window.close()
  
     def display_tiles(self):
         self.set_tile(self.tile_00, self.engine.board.tiles[0, 0])
