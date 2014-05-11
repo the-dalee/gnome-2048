@@ -43,7 +43,8 @@ class GameController(object):
             "redo_clicked": self.redo_clicked,
             "reset_clicked": self.reset_clicked,
             "exit_clicked": self.exit_clicked,
-            "window_state_changed": self.window_state_changed
+            "window_state_changed": self.window_state_changed,
+            "key-released": self.key_released,
             }
         self._builder.connect_signals(handlers)
 
@@ -157,5 +158,16 @@ class GameController(object):
             self.maximized = True
         else:
             self.maximized = False
-        
+            
+    def key_released(self, window, args):
+        keycode = args.get_keycode()[1]
+        print(keycode)
+        if keycode == 111:
+            self.engine.move(Direction.Up)
+        if keycode == 113:
+            self.engine.move(Direction.Left)
+        if keycode == 114:
+            self.engine.move(Direction.Right)
+        if keycode == 116:
+            self.engine.move(Direction.Down)
         

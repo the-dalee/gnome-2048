@@ -7,6 +7,7 @@
     <property name="can_focus">False</property>
     <property name="hide_titlebar_when_maximized">True</property>
     <property name="decorated">False</property>
+    <signal name="key-release-event" handler="key-released" swapped="no"/>
     <signal name="window-state-event" handler="window_state_changed" swapped="no"/>
     <child>
       <object class="GtkBox" id="box3">
