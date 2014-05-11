@@ -1,5 +1,6 @@
 from core.model.direction import Direction
 from gi.repository import Gtk
+from gi.overrides import Gdk
 
 
 class GameController(object):
@@ -42,6 +43,7 @@ class GameController(object):
             "redo_clicked": self.redo_clicked,
             "reset_clicked": self.reset_clicked,
             "exit_clicked": self.exit_clicked,
+            "window_state_changed": self.window_state_changed
             }
         self._builder.connect_signals(handlers)
 
@@ -142,3 +144,18 @@ class GameController(object):
     def show(self):
         self.window.show_all()
         self.engine.start()
+        
+    def toggle_maximize(self):
+        if self.maximized:
+            self.window.unmaximize()
+        else:
+            self.window.maximize()
+        
+    def window_state_changed(self, window, args):
+        new_state = args.new_window_state
+        if new_state & Gdk.Gdk.WindowState.MAXIMIZED:
+            self.maximized = True
+        else:
+            self.maximized = False
+        
+        
