@@ -139,329 +139,410 @@
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <child>
-              <object class="GtkGrid" id="grid1self.engine.move(Direction.Left)">
+              <object class="GtkGrid" id="board">
+                <property name="width_request">400</property>
+                <property name="height_request">400</property>
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
+                <property name="halign">center</property>
+                <property name="valign">center</property>
+                <property name="row_homogeneous">True</property>
+                <property name="column_homogeneous">True</property>
                 <child>
                   <object class="GtkLabel" id="tile00">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="halign">center</property>
+                    <property name="valign">center</property>
+                    <property name="margin_left">12</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">12</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">0</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile10">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">12</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">0</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile20">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">12</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">3</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">0</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile30">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">12</property>
+                    <property name="margin_top">12</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">4</property>
-                    <property name="top_attach">1</property>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">0</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile01">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">12</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">2</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">1</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile11">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">2</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">1</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile21">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">3</property>
-                    <property name="top_attach">2</property>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">1</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile31">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">12</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">4</property>
-                    <property name="top_attach">2</property>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">1</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile02">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">12</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">3</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">2</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile12">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">3</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">2</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile22">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">3</property>
-                    <property name="top_attach">3</property>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">2</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile32">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">12</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">6</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">4</property>
-                    <property name="top_attach">3</property>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">2</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile03">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">12</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">12</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">1</property>
-                    <property name="top_attach">4</property>
+                    <property name="left_attach">0</property>
+                    <property name="top_attach">3</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile23">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">12</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">3</property>
-                    <property name="top_attach">4</property>
+                    <property name="left_attach">2</property>
+                    <property name="top_attach">3</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile13">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">6</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">12</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">2</property>
-                    <property name="top_attach">4</property>
+                    <property name="left_attach">1</property>
+                    <property name="top_attach">3</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
                 <child>
                   <object class="GtkLabel" id="tile33">
+                    <property name="width_request">125</property>
+                    <property name="height_request">125</property>
                     <property name="visible">True</property>
                     <property name="can_focus">False</property>
+                    <property name="margin_left">6</property>
+                    <property name="margin_right">12</property>
+                    <property name="margin_top">6</property>
+                    <property name="margin_bottom">12</property>
                     <property name="hexpand">True</property>
                     <property name="vexpand">True</property>
                     <property name="label" translatable="yes">0</property>
                     <property name="justify">center</property>
-                    <attributes>
-                      <attribute name="scale" value="6"/>
-                    </attributes>
+                    <style>
+                      <class name="tile"/>
+                    </style>
                   </object>
                   <packing>
-                    <property name="left_attach">4</property>
-                    <property name="top_attach">4</property>
+                    <property name="left_attach">3</property>
+                    <property name="top_attach">3</property>
                     <property name="width">1</property>
                     <property name="height">1</property>
                   </packing>
                 </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
+                <style>
+                  <class name="board"/>
+                </style>
               </object>
               <packing>
                 <property name="expand">False</property>
                 <property name="fill">True</property>
+                <property name="padding">12</property>
                 <property name="position">0</property>
               </packing>
             </child>

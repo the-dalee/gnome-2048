@@ -9,6 +9,13 @@ class GameController(object):
         self.window = self._builder.get_object("main_window")
         self.window.connect("destroy", Gtk.main_quit)
 
+        css_provider = Gtk.CssProvider();
+        css_provider.load_from_path("./gui/styles/main.css")
+        context = Gtk.StyleContext()
+        context.add_provider_for_screen(self.window.get_screen(), 
+                                        css_provider, 
+                                        Gtk.STYLE_PROVIDER_PRIORITY_USER)
+        
         self.tile_00 = self._builder.get_object("tile00")
         self.tile_01 = self._builder.get_object("tile01")
         self.tile_02 = self._builder.get_object("tile02")
@@ -89,7 +96,41 @@ class GameController(object):
         pass
     
     def set_tile(self, label, tile):
+        label.get_style_context().remove_class("tile-2")
+        label.get_style_context().remove_class("tile-4")
+        label.get_style_context().remove_class("tile-8")
+        label.get_style_context().remove_class("tile-16")
+        label.get_style_context().remove_class("tile-32")
+        label.get_style_context().remove_class("tile-64")
+        label.get_style_context().remove_class("tile-128")
+        label.get_style_context().remove_class("tile-256")
+        label.get_style_context().remove_class("tile-512")
+        label.get_style_context().remove_class("tile-1024")
+        label.get_style_context().remove_class("tile-2048")  
         if tile is not None:
+            if tile.value == 2:
+                label.get_style_context().add_class("tile-2")
+            elif tile.value == 4:
+                label.get_style_context().add_class("tile-4")
+            elif tile.value == 8:
+                label.get_style_context().add_class("tile-8")
+            elif tile.value == 16:
+                label.get_style_context().add_class("tile-16")
+            elif tile.value == 32:
+                label.get_style_context().add_class("tile-32")
+            elif tile.value == 64:
+                label.get_style_context().add_class("tile-64")
+            elif tile.value == 128:
+                label.get_style_context().add_class("tile-128")
+            elif tile.value == 256:
+                label.get_style_context().add_class("tile-256")
+            elif tile.value == 512:
+                label.get_style_context().add_class("tile-512")
+            elif tile.value == 1024:
+                label.get_style_context().add_class("tile-1024")
+            elif tile.value == 2048:
+                label.get_style_context().add_class("tile-2048")
+        
             label.set_text(str(tile.value))
         else:
             label.set_text("")
