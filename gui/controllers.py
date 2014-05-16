@@ -1,6 +1,8 @@
 from core.model.direction import Direction
 from gi.repository import Gtk
 from gi.overrides import Gdk
+from core.model.commands.engine import SetState
+from core.model.game_state import GameState
 
 
 class GameController(object):
@@ -16,7 +18,7 @@ class GameController(object):
         context.add_provider_for_screen(self.window.get_screen(), 
                                         css_provider, 
                                         Gtk.STYLE_PROVIDER_PRIORITY_USER)
-        
+
         self.tile_00 = self._builder.get_object("tile00")
         self.tile_01 = self._builder.get_object("tile01")
         self.tile_02 = self._builder.get_object("tile02")
@@ -33,6 +35,15 @@ class GameController(object):
         self.tile_31 = self._builder.get_object("tile31")
         self.tile_32 = self._builder.get_object("tile32")
         self.tile_33 = self._builder.get_object("tile33")
+        
+        
+        self.messageOverlay = self._builder.get_object("board_overlay")
+        self.messageOverlayText = Gtk.Label()
+        self.messageOverlayText.set_halign(Gtk.Align.FILL)
+        self.messageOverlayText.set_valign(Gtk.Align.FILL)
+        self.messageOverlayText.get_style_context().add_class("message_overlay")
+        self.messageOverlayText.size_request()
+        self.messageOverlay.add_overlay(self.messageOverlayText)
 
         handlers = {
             "move_up_clicked": self.move_up_clicked,
@@ -45,6 +56,7 @@ class GameController(object):
             "exit_clicked": self.exit_clicked,
             "window_state_changed": self.window_state_changed,
             "key-released": self.key_released,
+            "get_overlay_child_position": self.get_overlay_child_position,
             }
         self._builder.connect_signals(handlers)
 
@@ -66,15 +78,18 @@ class GameController(object):
     def undo_clicked(self, args):
         self.engine.undo()
         self.display_tiles()
+        self.show_hide_message()
 
     def redo_clicked(self, args):
         self.engine.redo()
         self.display_tiles()
+        self.show_hide_message()
 
     def reset_clicked(self, args):
         self.engine.restart()
         self.engine.start()
         self.display_tiles()
+        self.show_hide_message()
 
     def exit_clicked(self, args):
         self.window.close()
@@ -141,6 +156,19 @@ class GameController(object):
     def notify_command(self, command):
         print(command)
         self.display_tiles()
+        
+        if isinstance(command, SetState):
+            self.show_hide_message()
+ 
+    def show_hide_message(self):
+        if self.engine.state == GameState.Lost:
+            self.messageOverlayText.set_text("Game over")
+            self.messageOverlayText.show_all()
+        elif self.engine.state == GameState.Won:
+            self.messageOverlayText.set_text("You won")
+            self.messageOverlayText.show_all()
+        else:
+            self.messageOverlayText.hide()
  
     def show(self):
         self.window.show_all()
@@ -170,4 +198,13 @@ class GameController(object):
             self.engine.move(Direction.Right)
         if keycode == 116:
             self.engine.move(Direction.Down)
+            
+    def get_overlay_child_position(self, widget, rectangle, data):
+        x = 0
+        y = 0
+        width = self.messageOverlay.get_allocated_width()
+        height = self.messageOverlay.get_allocated_height()
+        data.width = width 
+        data.height = height
+        return True
         

@@ -111,6 +111,7 @@ class GameEngine(object):
             self.board.unmark_merged_all()
 
     def start(self):
+        self.execute_command(SetState(self, GameState.InProgress))
         random = Random()
         empty_tiles = self.board.get_empty_tiles()
         if empty_tiles:
