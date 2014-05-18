@@ -3,21 +3,26 @@ from gi.repository import Gtk
 from gi.overrides import Gdk
 from core.model.commands.engine import SetState
 from core.model.game_state import GameState
+import os
 
 
 class GameController(object):
-    def __init__(self, game_engine):
+    def __init__(self, game_engine, data_dir, current_theme="classic"):
         self._builder = Gtk.Builder() 
-        self._builder.add_from_file("./gui/glade/main.glade")
+        glade_file = os.path.join(data_dir, "gui", "main.glade")
+        style_file = os.path.join(data_dir, "themes", current_theme, "main.css")
+
+        self._builder.add_from_file(glade_file)
         self.window = self._builder.get_object("main_window")
-        self.window.connect("destroy", Gtk.main_quit)
 
         css_provider = Gtk.CssProvider();
-        css_provider.load_from_path("./gui/styles/main.css")
+        css_provider.load_from_path(style_file)
         context = Gtk.StyleContext()
         context.add_provider_for_screen(self.window.get_screen(), 
                                         css_provider, 
                                         Gtk.STYLE_PROVIDER_PRIORITY_USER)
+
+        self.window.connect("destroy", Gtk.main_quit)
 
         self.tile_00 = self._builder.get_object("tile00")
         self.tile_01 = self._builder.get_object("tile01")
