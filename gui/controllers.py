@@ -41,6 +41,8 @@ class GameController(object):
         self.tile_32 = self._builder.get_object("tile32")
         self.tile_33 = self._builder.get_object("tile33")
         
+        self.keyboard_box = self._builder.get_object("keyboard_box")
+        
         
         self.messageOverlay = self._builder.get_object("board_overlay")
         self.messageOverlayText = Gtk.Label()
@@ -67,6 +69,8 @@ class GameController(object):
 
         self.engine = game_engine
         self.engine.register(self)
+        
+        self.set_keyboard_visibility(False)
 
     def move_left_clicked(self, args):
         self.engine.move(Direction.Left)
@@ -176,7 +180,7 @@ class GameController(object):
             self.messageOverlayText.hide()
  
     def show(self):
-        self.window.show_all()
+        self.window.show()
         self.engine.start()
         
     def toggle_maximize(self):
@@ -203,6 +207,13 @@ class GameController(object):
             self.engine.move(Direction.Right)
         if keycode == 116:
             self.engine.move(Direction.Down)
+            
+    def set_keyboard_visibility(self, visible):
+        if visible:
+            self.keyboard_box.show_all()
+        else:
+            self.keyboard_box.hide()
+            
             
     def get_overlay_child_position(self, widget, rectangle, data):
         x = 0
