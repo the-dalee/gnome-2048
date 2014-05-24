@@ -4,6 +4,7 @@ from gi.overrides import Gdk
 from core.model.commands.engine import SetState
 from core.model.game_state import GameState
 import os
+import i18n
 
 
 class MainWindowController(object):
@@ -173,10 +174,10 @@ class MainWindowController(object):
  
     def show_hide_message(self):
         if self.engine.state == GameState.Lost:
-            self.messageOverlayText.set_text("Game over")
+            self.messageOverlayText.set_text(_("Game over"))
             self.messageOverlayText.show_all()
         elif self.engine.state == GameState.Won:
-            self.messageOverlayText.set_text("You won")
+            self.messageOverlayText.set_text(_("You won"))
             self.messageOverlayText.show_all()
         else:
             self.messageOverlayText.hide()
