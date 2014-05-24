@@ -7,7 +7,7 @@ import os
 
 
 class GameController(object):
-    def __init__(self, game_engine, data_dir, current_theme="classic"):
+    def __init__(self, game_engine, data_dir, theme_selection_controller, current_theme="classic"):
         self._builder = Gtk.Builder() 
         glade_file = os.path.join(data_dir, "gui", "main.glade")
         style_file = os.path.join(data_dir, "themes", current_theme, "main.css")
@@ -69,6 +69,9 @@ class GameController(object):
 
         self.engine = game_engine
         self.engine.register(self)
+        
+        theme_selection_controller.window.set_transient_for(self.window)
+        theme_selection_controller.show()
         
         self.set_keyboard_visibility(False)
 
