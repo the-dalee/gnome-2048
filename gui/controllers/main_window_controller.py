@@ -6,7 +6,7 @@ from core.model.game_state import GameState
 import os
 
 
-class GameController(object):
+class MainWindowController(object):
     def __init__(self, game_engine, data_dir, theme_selection_controller, current_theme="classic"):
         self._builder = Gtk.Builder() 
         glade_file = os.path.join(data_dir, "gui", "main.glade")
