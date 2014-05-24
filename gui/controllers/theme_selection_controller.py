@@ -10,6 +10,7 @@ class ThemeSelectionController(object):
         glade_file = os.path.join(data_dir, "gui", "theme_selection.glade")
 
         self._builder.add_from_file(glade_file)
+        self._builder.set_translation_domain("gnome-2048")
         self.window = self._builder.get_object("theme_selection_window")
         self.theme_store = self._builder.get_object("theme_selection_store")
         self.data_dir = data_dir

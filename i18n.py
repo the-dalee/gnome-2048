@@ -1,6 +1,10 @@
 import gettext
+import locale
 
-t = gettext.translation('gnome-2048-1.0', 'locales/', fallback=True)
-
+current_locale, encoding = locale.getdefaultlocale()
+locale.bindtextdomain('gnome-2048', 'locales')
+t = gettext.translation('gnome-2048', 'locales/', [current_locale])
+t.install()
 _ = t.gettext
 __ = t.ngettext
+

@@ -13,6 +13,7 @@ class MainWindowController(object):
         glade_file = os.path.join(data_dir, "gui", "main.glade")
         style_file = os.path.join(data_dir, "themes", current_theme, "main.css")
 
+        self._builder.set_translation_domain("gnome-2048")
         self._builder.add_from_file(glade_file)
         self.window = self._builder.get_object("main_window")
 
