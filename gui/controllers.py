@@ -71,7 +71,6 @@ class GameController(object):
         self.engine.register(self)
         
         theme_selection_controller.window.set_transient_for(self.window)
-        theme_selection_controller.show()
         
         self.set_keyboard_visibility(False)
 
