@@ -38,7 +38,7 @@ class GameEngine(object):
             job.undo()
             self.redo_stack.append(job)
         else:
-            print("Undo stack empty")
+            print(_("Undo stack empty"))
 
     def redo(self):
         if self.redo_stack:
@@ -46,7 +46,7 @@ class GameEngine(object):
             job.execute()
             self.undo_stack.append(job)
         else:
-            print("Redo stack empty")
+            print(_("Redo stack empty"))
 
     def restart(self):
         self.board = Board()
@@ -56,7 +56,7 @@ class GameEngine(object):
     def move(self, direction):
         if (not (self.state == GameState.Pending
             or self.state == GameState.InProgress)):
-            raise Exception("The game is over")
+            raise Exception(_("The game is over"))
 
         coords = []
         w = self.board.width
@@ -70,7 +70,18 @@ class GameEngine(object):
         if direction == Direction.Down:
             coords = [(x, y) for x in range(w) for y in range(h - 1, -1, -1)]
 
-        job = Job()
+        if direction == Direction.Left:
+            job_description = _("Move left")
+        elif direction == Direction.Right:
+            job_description = _("Move right")
+        elif direction == Direction.Up:
+            job_description = _("Move up")
+        elif direction == Direction.Down:
+            job_description = _("Move down")
+        else:
+            raise RuntimeError(_("Unknown direction"))
+
+        job = Job(description=job_description)
         moved = False
 
         for coord in coords:

@@ -19,7 +19,10 @@ class SetState(EngineCommand):
         self.last_state = engine.state
         self.new_state = new_state
 
-        self.description = "Set game state to " + str(new_state)
+        self.description = _("Set game state to %(state)s" %
+                    {
+                        "state": str(new_state),
+                    })
 
     def execute(self):
         self.engine.state = self.new_state

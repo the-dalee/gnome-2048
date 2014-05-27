@@ -20,7 +20,7 @@ class MoveTile(BoardTile):
         self.destination = destination
         self.board = board
 
-        descriptionText = "Move tile from (%(sx)i, %(sy)i) to (%(dx)i, %(dy)i)"
+        descriptionText = _("Move tile from (%(sx)i, %(sy)i) to (%(dx)i, %(dy)i)")
         self.description = descriptionText % {
                     "sx": source[0],
                     "sy": source[1],
@@ -49,7 +49,7 @@ class MergeTile(BoardTile):
         self.destinationTile = board.tiles[destination]
         self.board = board
 
-        descriptionText = "Merge tile at (%(x)i, %(y)i) with (%(dx)i, %(dy)i)"
+        descriptionText = _("Merge tile at (%(x)i, %(y)i) with (%(dx)i, %(dy)i)")
         self.description = descriptionText % {
                     "x": source[0],
                     "y": source[1],
@@ -77,7 +77,7 @@ class AddTile(BoardTile):
         self.tile = tile
         self.board = board
 
-        descriptionText = "Add tile %(val)i at (%(x)i, %(y)i)"
+        descriptionText = _("Add tile %(val)i at (%(x)i, %(y)i)")
         self.description = descriptionText % {
                     "x": position[0],
                     "y": position[1],
@@ -101,7 +101,7 @@ class RemoveTile(BoardTile):
         self.tile = self.board.tiles[position]
         self.board = board
 
-        descriptionText = "Remove tile at (%(x)i, %(y)i)"
+        descriptionText = _("Remove tile at (%(x)i, %(y)i)")
         self.description = descriptionText % {
                     "x": position[0],
                     "y": position[1]

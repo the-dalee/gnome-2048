@@ -10,5 +10,6 @@ class Tile(object):
 
     def merge(self, tile):
         if tile.value != self.value:
-            raise ArgumentError(tile, "Source must have equal value as target")
+            message = _("Source must have equal value as target")
+            raise ArgumentError(tile, message)
         self.value = self.value + tile.value

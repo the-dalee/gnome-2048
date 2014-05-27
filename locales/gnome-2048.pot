@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-2048\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-24 13:02+0200\n"
+"POT-Creation-Date: 2014-05-27 22:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,12 +17,83 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gui/controllers/main_window_controller.py:177
+#: gui/controllers/main_window_controller.py:178
 msgid "Game over"
 msgstr ""
 
-#: gui/controllers/main_window_controller.py:180
+#: gui/controllers/main_window_controller.py:181
 msgid "You won"
+msgstr ""
+
+#: core/model/board.py:27
+#, python-format
+msgid "Slot with position %(pos)s already contains a tile"
+msgstr ""
+
+#: core/model/board.py:33
+#, python-format
+msgid "The slot with this position %(pos)s is already empty"
+msgstr ""
+
+#: core/model/tile.py:13
+msgid "Source must have equal value as target"
+msgstr ""
+
+#: core/model/commands/board.py:23
+#, python-format
+msgid "Move tile from (%(sx)i, %(sy)i) to (%(dx)i, %(dy)i)"
+msgstr ""
+
+#: core/model/commands/board.py:52
+#, python-format
+msgid "Merge tile at (%(x)i, %(y)i) with (%(dx)i, %(dy)i)"
+msgstr ""
+
+#: core/model/commands/board.py:80
+#, python-format
+msgid "Add tile %(val)i at (%(x)i, %(y)i)"
+msgstr ""
+
+#: core/model/commands/board.py:104
+#, python-format
+msgid "Remove tile at (%(x)i, %(y)i)"
+msgstr ""
+
+#: core/model/commands/engine.py:22
+#, python-format
+msgid "Set game state to %(state)s"
+msgstr ""
+
+#: core/engine.py:41
+msgid "Undo stack empty"
+msgstr ""
+
+#: core/engine.py:49
+msgid "Redo stack empty"
+msgstr ""
+
+#: core/engine.py:59
+msgid "The game is over"
+msgstr ""
+
+#: core/engine.py:74
+msgid "Move left"
+msgstr ""
+
+#: core/engine.py:76
+msgid "Move right"
+msgstr ""
+
+#: core/engine.py:78
+msgid "Move up"
+msgstr ""
+
+#: core/engine.py:80
+msgid "Move down"
+msgstr ""
+
+#: core/engine.py:82
+msgid "Unknown direction"
 msgstr ""
 
 #: resources/gui/main.glade:8 resources/gui/main.glade:88

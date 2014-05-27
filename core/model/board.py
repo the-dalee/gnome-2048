@@ -24,15 +24,14 @@ class Board(object):
 
     def add(self, position, tile):
         if self.tiles[position] != None:
-            raise Exception("The slot with this position "
-                            + str(position) + " "
-                            + "contains already a tile")
+            message = _("Slot with position %(pos)s already contains a tile")
+            raise Exception(message % {"pos": str(position)})
         self.tiles[position] = tile
 
     def remove(self, position):
         if self.tiles[position] == None:
-            raise Exception("The slot with this position "
-                            + "is already empty")
+            message = _("The slot with this position %(pos)s is already empty")
+            raise Exception(message % {"pos": str(position)})
         self.tiles[position] = None
 
     def move(self, old_position, new_position):

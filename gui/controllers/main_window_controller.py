@@ -167,7 +167,7 @@ class MainWindowController(object):
             label.set_text("")
  
     def notify_command(self, command):
-        print(command)
+        print(command.description)
         self.display_tiles()
         
         if isinstance(command, SetState):
@@ -202,7 +202,6 @@ class MainWindowController(object):
             
     def key_released(self, window, args):
         keycode = args.get_keycode()[1]
-        print(keycode)
         if keycode == 111:
             self.engine.move(Direction.Up)
         if keycode == 113:

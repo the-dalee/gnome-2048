@@ -1,7 +1,8 @@
 class Job(object):
     commands = []
 
-    def __init__(self, commands=None):
+    def __init__(self, commands=None, description=None):
+        self.description = description
         if commands is None:
             self.commands = list()
         else:
