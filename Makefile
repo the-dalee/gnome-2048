@@ -8,6 +8,7 @@ THEMES = $(TARGET)/resources/themes
 LOCALES = $(TARGET)/locales
 
 PIXMAPS = $(DESTDIR)/usr/share/pixmaps
+ICONS = $(DESTDIR)/usr/share/icons/hicolor
 APPLICATIONS = $(DESTDIR)/usr/share/applications
 
 all: build-translations
@@ -25,7 +26,7 @@ install: all
 	mkdir -p $(GLADES)
 	mkdir -p $(THEMES)
 	
-	mkdir -p $(PIXMAPS)
+	mkdir -p $(ICONS)/scalable/apps
 	mkdir -p $(APPLICATIONS)
 	
 	mkdir -p $(LOCALES)/de_DE/LC_MESSAGES/
@@ -46,7 +47,7 @@ install: all
 	install --mode=744 resources/themes/classic/*.css $(THEMES)/classic/
 	
 	#install --mode=744 environment/Pyhello.desktop $(APPLICATIONS)
-	#install --mode=744 environment/pyhello.png $(PIXMAPS)
+	install --mode=744 icons/hicolor/scalable/apps/gnome-2048.svg $(ICONS)/scalable/apps
 	ln -s $(TARGET)/$(NAME).py $(BINDIR)/$(NAME)
 
 clean:
