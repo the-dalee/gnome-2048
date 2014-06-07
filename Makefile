@@ -1,8 +1,7 @@
 NAME = gnome-2048
-BINDIR = $(DESTDIR)/usr/game
+BINDIR = $(DESTDIR)/usr/games
 TARGET = $(DESTDIR)/usr/share/games/$(NAME)
 
-RESOURCE = $(DESTDIR)/usr/share/$(NAME)/resources
 GLADES = $(TARGET)/resources/gui
 THEMES = $(TARGET)/resources/themes
 
@@ -11,27 +10,18 @@ LOCALES = $(TARGET)/locales
 PIXMAPS = $(DESTDIR)/usr/share/pixmaps
 APPLICATIONS = $(DESTDIR)/usr/share/applications
 
+all: build-translations
+
+
 %.mo: %.po
 	msgfmt -cv -o $@ $< 
-
-build-translations:
-	#find .  -iregex "^.+\(.py\|.glade\)$$" | xargs xgettext \
-	#	-d gnome-2048 \
-	#	-o locales/gnome-2048.pot \
-	#	--package-name="gnome-2048" \
-	#	--copyright-holder="Damian Lippok"
-	#
-	#for file in `find .  -iregex "^.+\(.po\)$$"` do \
-	#	msgmerge -U $$file locales/gnome-2048.pot \
-	#	done 
-
-all: build-translations
+	
+build-translations: ./locales/de_DE/LC_MESSAGES/gnome-2048.mo
 
 install: all
 	mkdir -p $(BINDIR)
 	mkdir -p $(TARGET)
 	
-	mkdir -p $(RESOURCE)
 	mkdir -p $(GLADES)
 	mkdir -p $(THEMES)
 	
@@ -60,11 +50,12 @@ install: all
 	ln -s $(TARGET)/$(NAME).py $(BINDIR)/$(NAME)
 
 clean:
+	find .  -iregex "^.+\.mo" | xargs rm -f
+	find .  -iregex "^.+\~" | xargs rm -f
 	rm -fr .temp
 	
 uninstall:
 	rm -rf $(TARGET)
-	rm -rf $(RESOURCE)
 	rm $(BINDIR)/$(NAME)
 	#rm $(PIXMAPS)/pyhello.png
 	#rm $(APPLICATIONS)/Pyhello.desktop
