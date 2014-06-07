@@ -46,20 +46,21 @@ install: all
 	
 	install --mode=744 resources/themes/classic/*.css $(THEMES)/classic/
 	
-	#install --mode=744 environment/Pyhello.desktop $(APPLICATIONS)
-	install --mode=744 icons/hicolor/scalable/apps/gnome-2048.svg $(ICONS)/scalable/apps
+	install --mode=744 environment/gnome-2048.desktop $(APPLICATIONS)
+	install --mode=744 environment/icons/hicolor/scalable/apps/gnome-2048.svg $(ICONS)/scalable/apps
 	ln -s $(TARGET)/$(NAME).py $(BINDIR)/$(NAME)
 
+	
 clean:
 	find .  -iregex "^.+\.mo" | xargs rm -f
 	find .  -iregex "^.+\~" | xargs rm -f
-	rm -fr .temp
+	rm -fr .temp 
 	
 uninstall:
 	rm -rf $(TARGET)
 	rm $(BINDIR)/$(NAME)
-	#rm $(PIXMAPS)/pyhello.png
-	#rm $(APPLICATIONS)/Pyhello.desktop
+	rm $(ICONS)/scalable/apps/gnome-2048.svg
+	rm $(APPLICATIONS)/gnome-2048.desktop
 	
 .PHONY: install
 .PHONY: uninstall
