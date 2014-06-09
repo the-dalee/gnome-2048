@@ -3,8 +3,9 @@ from core.engine import GameEngine
 from gui.controllers.main_window_controller import MainWindowController
 from gui.controllers.theme_selection_controller import ThemeSelectionController
 import os
-from gui.controllers import gmenu_controller
+from gui.controllers import gmenu_controller, about_controller
 from gui.controllers.gmenu_controller import GmenuController
+from gui.controllers.about_controller import AboutController
 
 
 class Gnome2048Application(Gtk.Application):
@@ -13,7 +14,7 @@ class Gnome2048Application(Gtk.Application):
 
         exec_path = os.path.realpath(__file__)
         exec_dir = os.path.dirname(exec_path)
-        resources_path = os.path.join(exec_dir, "../resources", "")
+        self.resources_path = os.path.join(exec_dir, "../resources", "")
         user_resources_path = "~/.config/gnome-2048"
 
         engine = GameEngine()
@@ -23,10 +24,9 @@ class Gnome2048Application(Gtk.Application):
         #theme_selection_controller.window.set_transient_for(self.window)
 
         self.main_window_controller = MainWindowController(engine,
-                                                  resources_path)
+                                                  self.resources_path)
 
         self.gmenu_controller = GmenuController(self)
-
 
     def do_activate(self):
         self.set_app_menu(self.gmenu_controller.menu)
@@ -37,4 +37,9 @@ class Gnome2048Application(Gtk.Application):
         Gtk.Application.do_startup(self)
 
     def show_about(self):
-        pass
+        self.about_controller = AboutController(self.resources_path)
+        about_win = self.about_controller.window
+        main_win = self.main_window_controller.window
+        about_win.set_transient_for(main_win)
+
+        self.about_controller.show()
