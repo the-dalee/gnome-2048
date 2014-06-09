@@ -8,14 +8,16 @@ import i18n
 
 
 class MainWindowController(object):
-    def __init__(self, game_engine, data_dir, theme_selection_controller, current_theme="classic"):
+    def __init__(self, game_engine, data_dir, current_theme="classic"):
         self._builder = Gtk.Builder() 
         glade_file = os.path.join(data_dir, "gui", "main.glade")
         style_file = os.path.join(data_dir, "themes", current_theme, "main.css")
-
+        
         self._builder.set_translation_domain("gnome-2048")
         self._builder.add_from_file(glade_file)
         self.window = self._builder.get_object("main_window")
+
+        
 
         css_provider = Gtk.CssProvider();
         css_provider.load_from_path(style_file)
@@ -72,7 +74,6 @@ class MainWindowController(object):
         self.engine = game_engine
         self.engine.register(self)
         
-        theme_selection_controller.window.set_transient_for(self.window)
         
         self.set_keyboard_visibility(False)
 
