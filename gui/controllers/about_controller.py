@@ -13,4 +13,5 @@ class AboutController(object):
         self.window.set_decorated(True)
 
     def show(self):
-        self.window.show()
+        self.window.run()
+        self.window.hide()

@@ -27,6 +27,10 @@ class Gnome2048Application(Gtk.Application):
                                                   self.resources_path)
 
         self.gmenu_controller = GmenuController(self)
+        self.about_controller = AboutController(self.resources_path)
+        about_win = self.about_controller.window
+        main_win = self.main_window_controller.window
+        about_win.set_transient_for(main_win)
 
     def do_activate(self):
         self.set_app_menu(self.gmenu_controller.menu)
@@ -37,9 +41,4 @@ class Gnome2048Application(Gtk.Application):
         Gtk.Application.do_startup(self)
 
     def show_about(self):
-        self.about_controller = AboutController(self.resources_path)
-        about_win = self.about_controller.window
-        main_win = self.main_window_controller.window
-        about_win.set_transient_for(main_win)
-
         self.about_controller.show()
