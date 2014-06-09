@@ -1,8 +1,10 @@
-from gi.repository import Gtk, GObject
+from gi.repository import Gtk, GObject, Gio
 from core.engine import GameEngine
 from gui.controllers.main_window_controller import MainWindowController
 from gui.controllers.theme_selection_controller import ThemeSelectionController
 import os
+from gui.controllers import gmenu_controller
+from gui.controllers.gmenu_controller import GmenuController
 
 
 class Gnome2048Application(Gtk.Application):
@@ -23,11 +25,16 @@ class Gnome2048Application(Gtk.Application):
         self.main_window_controller = MainWindowController(engine,
                                                   resources_path)
 
+        self.gmenu_controller = GmenuController(self)
+
+
     def do_activate(self):
-        Gtk.Application.do_activate(self)
-        self.add_window(self.main_window_controller.window)
-        self.main_window_controller.window.show()
+        self.set_app_menu(self.gmenu_controller.menu)
+        self.main_window_controller.window.set_application(self)
+        self.main_window_controller.show()
 
     def do_startup (self):
         Gtk.Application.do_startup(self)
 
+    def show_about(self):
+        pass

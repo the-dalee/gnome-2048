@@ -4,26 +4,23 @@ from gi.overrides import Gdk
 from core.model.commands.engine import SetState
 from core.model.game_state import GameState
 import os
-import i18n
 
 
 class MainWindowController(object):
     def __init__(self, game_engine, data_dir, current_theme="classic"):
-        self._builder = Gtk.Builder() 
+        self._builder = Gtk.Builder()
         glade_file = os.path.join(data_dir, "gui", "main.glade")
         style_file = os.path.join(data_dir, "themes", current_theme, "main.css")
-        
+
         self._builder.set_translation_domain("gnome-2048")
         self._builder.add_from_file(glade_file)
         self.window = self._builder.get_object("main_window")
 
-        
-
-        css_provider = Gtk.CssProvider();
+        css_provider = Gtk.CssProvider()
         css_provider.load_from_path(style_file)
         context = Gtk.StyleContext()
-        context.add_provider_for_screen(self.window.get_screen(), 
-                                        css_provider, 
+        context.add_provider_for_screen(self.window.get_screen(),
+                                        css_provider,
                                         Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
         self.window.connect("destroy", Gtk.main_quit)
@@ -44,10 +41,9 @@ class MainWindowController(object):
         self.tile_31 = self._builder.get_object("tile31")
         self.tile_32 = self._builder.get_object("tile32")
         self.tile_33 = self._builder.get_object("tile33")
-        
+
         self.keyboard_box = self._builder.get_object("keyboard_box")
-        
-        
+
         self.messageOverlay = self._builder.get_object("board_overlay")
         self.messageOverlayText = Gtk.Label()
         self.messageOverlayText.set_halign(Gtk.Align.FILL)
@@ -66,15 +62,14 @@ class MainWindowController(object):
             "reset_clicked": self.reset_clicked,
             "exit_clicked": self.exit_clicked,
             "window_state_changed": self.window_state_changed,
-            "key-released": self.key_released,
+            "key_released": self.key_released,
             "get_overlay_child_position": self.get_overlay_child_position,
             }
         self._builder.connect_signals(handlers)
 
         self.engine = game_engine
         self.engine.register(self)
-        
-        
+
         self.set_keyboard_visibility(False)
 
     def move_left_clicked(self, args):
@@ -183,11 +178,11 @@ class MainWindowController(object):
             self.messageOverlayText.show_all()
         else:
             self.messageOverlayText.hide()
- 
+
     def show(self):
         self.window.show()
         self.engine.start()
-        
+
     def toggle_maximize(self):
         if self.maximized:
             self.window.unmaximize()

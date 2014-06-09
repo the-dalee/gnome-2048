@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Generated with glade 3.16.1 -->
 <interface>
-  <requires lib="gtk+" version="3.10"/>
+  <requires lib="gtk+" version="3.8"/>
   <object class="GtkAction" id="action1"/>
-  <object class="GtkWindow" id="main_window">
+  <object class="GtkApplicationWindow" id="main_window">
     <property name="can_focus">False</property>
-    <property name="title" translatable="yes" context="Application title">Gnome 2048</property>
+    <property name="title" translatable="yes">Gnome 2048</property>
     <property name="hide_titlebar_when_maximized">True</property>
+    <property name="icon_name">gnome-2048</property>
     <property name="decorated">False</property>
-    <signal name="key-release-event" handler="key-released" swapped="no"/>
+    <signal name="key-release-event" handler="key_released" swapped="no"/>
     <signal name="window-state-event" handler="window_state_changed" swapped="no"/>
     <child>
       <object class="GtkBox" id="box3">

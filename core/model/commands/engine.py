@@ -1,3 +1,5 @@
+import i18n
+
 class EngineCommand(object):
     type = "Engine"
     description = "Do nothing with engine"
