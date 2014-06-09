@@ -6,5 +6,5 @@ find .  -iregex "^.+\(.py\|.glade\)$" | xargs xgettext \
 	--copyright-holder="Damian Lippok"
 	
 for file in `find .  -iregex "^.+\(.po\)$"` 
-	do msgmerge -U $file locales/gnome-2048.pot
+	do msgmerge -U $file ./locales/gnome-2048.pot
 done

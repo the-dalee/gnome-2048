@@ -8,20 +8,28 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-2048\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-07 14:47+0200\n"
+"POT-Creation-Date: 2014-06-09 20:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gui/controllers/main_window_controller.py:178
+#: gui/controllers/gmenu_controller.py:8
+msgid "About Gnome 2048"
+msgstr ""
+
+#: gui/controllers/gmenu_controller.py:9
+msgid "Quit"
+msgstr ""
+
+#: gui/controllers/main_window_controller.py:174
 msgid "Game over"
 msgstr ""
 
-#: gui/controllers/main_window_controller.py:181
+#: gui/controllers/main_window_controller.py:177
 msgid "You won"
 msgstr ""
 
@@ -59,7 +67,7 @@ msgstr ""
 msgid "Remove tile at (%(x)i, %(y)i)"
 msgstr ""
 
-#: core/model/commands/engine.py:22
+#: core/model/commands/engine.py:24
 #, python-format
 msgid "Set game state to %(state)s"
 msgstr ""
@@ -96,24 +104,62 @@ msgstr ""
 msgid "Unknown direction"
 msgstr ""
 
-#: resources/gui/main.glade:8 resources/gui/main.glade:88
+#: resources/gui/about.glade:10
+msgid "Copyright © 2014 Damian Lippok"
+msgstr ""
+
+#: resources/gui/about.glade:11
+msgid ""
+"The MIT License (MIT)\n"
+"\n"
+"Copyright (c) 2014 Damian Lippok\n"
+"\n"
+"Permission is hereby granted, free of charge, to any person obtaining a "
+"copy\n"
+"of this software and associated documentation files (the \"Software\"), to "
+"deal\n"
+"in the Software without restriction, including without limitation the "
+"rights\n"
+"to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n"
+"copies of the Software, and to permit persons to whom the Software is\n"
+"furnished to do so, subject to the following conditions:\n"
+"\n"
+"The above copyright notice and this permission notice shall be included in\n"
+"all copies or substantial portions of the Software.\n"
+"\n"
+"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS "
+"OR\n"
+"IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n"
+"FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n"
+"AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n"
+"LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING "
+"FROM,\n"
+"OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n"
+"THE SOFTWARE."
+msgstr ""
+
+#: resources/gui/main.glade:8
+msgid "Gnome 2048"
+msgstr ""
+
+#: resources/gui/main.glade:27
+msgid "New game"
+msgstr ""
+
+#: resources/gui/main.glade:51
+msgid "Undo"
+msgstr ""
+
+#: resources/gui/main.glade:65
+msgid "Redo"
+msgstr ""
+
+#: resources/gui/main.glade:89
 msgctxt "Application title"
 msgid "Gnome 2048"
 msgstr ""
 
-#: resources/gui/main.glade:26
-msgid "New game"
-msgstr ""
-
-#: resources/gui/main.glade:50
-msgid "Undo"
-msgstr ""
-
-#: resources/gui/main.glade:64
-msgid "Redo"
-msgstr ""
-
-#: resources/gui/main.glade:113
+#: resources/gui/main.glade:114
 msgid "Close"
 msgstr ""
 

@@ -1,4 +1,5 @@
-# German translations for gnome-2048 package.
+# German translations for gnome-2048 package
+# German messages for gnome-2048.
 # Copyright (C) 2014 Damian Lippok
 # This file is distributed under the same license as the gnome-2048 package.
 # Damian Lippok <mail.dalee@gmail.com>, 2014.
@@ -7,116 +8,187 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-2048\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-05-27 22:36+0200\n"
-"PO-Revision-Date: 2014-05-24 13:05+0200\n"
+"POT-Creation-Date: 2014-06-09 20:27+0200\n"
+"PO-Revision-Date: 2014-06-09 20:38+0200\n"
 "Last-Translator: Damian Lippok <mail.dalee@gmail.com>\n"
-"Language-Team: German\n"
+"Language-Team: Deutsch <>\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Gtranslator 2.91.6\n"
 
-#: gui/controllers/main_window_controller.py:178
+#: gui/controllers/gmenu_controller.py:8
+msgid "About Gnome 2048"
+msgstr "Info zu Gnome 2048"
+
+#: gui/controllers/gmenu_controller.py:9
+msgid "Quit"
+msgstr "Beenden"
+
+#: gui/controllers/main_window_controller.py:174
 msgid "Game over"
-msgstr "Das Spiel ist vorbei"
+msgstr "Spiel vorbei"
 
-#: gui/controllers/main_window_controller.py:181
+#: gui/controllers/main_window_controller.py:177
 msgid "You won"
 msgstr "Sie haben gewonnen"
 
 #: core/model/board.py:27
 #, python-format
 msgid "Slot with position %(pos)s already contains a tile"
-msgstr "Auf Position %(pos)s befindet sich bereits ein Stein"
+msgstr ""
 
 #: core/model/board.py:33
 #, python-format
 msgid "The slot with this position %(pos)s is already empty"
-msgstr "Position %(pos)s is bereits frei"
+msgstr ""
 
 #: core/model/tile.py:13
 msgid "Source must have equal value as target"
-msgstr "Quelle und Ziel müssen den gleichen Wert haben"
+msgstr ""
 
 #: core/model/commands/board.py:23
 #, python-format
 msgid "Move tile from (%(sx)i, %(sy)i) to (%(dx)i, %(dy)i)"
-msgstr "Stein von (%(sx)i, %(sy)i) nach (%(dx)i, %(dy)i) bewegen"
+msgstr ""
 
 #: core/model/commands/board.py:52
 #, python-format
 msgid "Merge tile at (%(x)i, %(y)i) with (%(dx)i, %(dy)i)"
-msgstr "Steine auf Position (%(x)i, %(y)i) mit (%(dx)i, %(dy)i) zusammenführen"
+msgstr ""
 
 #: core/model/commands/board.py:80
 #, python-format
 msgid "Add tile %(val)i at (%(x)i, %(y)i)"
-msgstr "Stein %(val)i in (%(x)i, %(y)i) hinzufügen"
+msgstr ""
 
 #: core/model/commands/board.py:104
 #, python-format
 msgid "Remove tile at (%(x)i, %(y)i)"
-msgstr "Stein in (%(x)i, %(y)i) entfernen"
+msgstr ""
 
-#: core/model/commands/engine.py:22
+#: core/model/commands/engine.py:24
 #, python-format
 msgid "Set game state to %(state)s"
-msgstr "Spielzustand auf %(state)s setzen"
+msgstr ""
 
 #: core/engine.py:41
 msgid "Undo stack empty"
-msgstr "Rückgängig-Stapel leer"
+msgstr ""
 
 #: core/engine.py:49
 msgid "Redo stack empty"
-msgstr "Wiederholen-Stapel leer"
+msgstr ""
 
 #: core/engine.py:59
-#, fuzzy
 msgid "The game is over"
-msgstr "Das Spiel ist vorbei"
+msgstr ""
 
 #: core/engine.py:74
 msgid "Move left"
-msgstr "Nach links bewegen"
+msgstr ""
 
 #: core/engine.py:76
 msgid "Move right"
-msgstr "Nach rechts bewegen"
+msgstr ""
 
 #: core/engine.py:78
 msgid "Move up"
-msgstr "Nach oben bewegen"
+msgstr ""
 
 #: core/engine.py:80
 msgid "Move down"
-msgstr "Nach unten bewegen"
+msgstr ""
 
 #: core/engine.py:82
 msgid "Unknown direction"
-msgstr "Richtung unbekannt"
+msgstr ""
 
-#: resources/gui/main.glade:8 resources/gui/main.glade:88
+#: resources/gui/about.glade:10
+msgid "Copyright © 2014 Damian Lippok"
+msgstr ""
+
+#: resources/gui/about.glade:11
+msgid ""
+"The MIT License (MIT)\n"
+"\n"
+"Copyright (c) 2014 Damian Lippok\n"
+"\n"
+"Permission is hereby granted, free of charge, to any person obtaining a "
+"copy\n"
+"of this software and associated documentation files (the \"Software\"), to "
+"deal\n"
+"in the Software without restriction, including without limitation the "
+"rights\n"
+"to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n"
+"copies of the Software, and to permit persons to whom the Software is\n"
+"furnished to do so, subject to the following conditions:\n"
+"\n"
+"The above copyright notice and this permission notice shall be included in\n"
+"all copies or substantial portions of the Software.\n"
+"\n"
+"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS "
+"OR\n"
+"IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n"
+"FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n"
+"AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n"
+"LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING "
+"FROM,\n"
+"OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n"
+"THE SOFTWARE."
+msgstr ""
+"MIT-Lizenz\n"
+"\n"
+"Copyright (c) 2014 Damian Lippok\n"
+"\n"
+"Hiermit wird unentgeltlich jeder Person, die eine Kopie der Software und "
+"der\n"
+"zugehörigen Dokumentationen (die \"Software\") erhält, die Erlaubnis "
+"erteilt, \n"
+"sie uneingeschränkt zu benutzen, inklusive und ohne Ausnahme dem Recht, "
+"sie \n"
+"zu verwenden, kopieren, ändern, fusionieren, verlegen, verbreiten, \n"
+"unterlizenzieren und/oder zu verkaufen, und Personen, die diese Software \n"
+"erhalten, diese Rechte zu geben, unter den folgenden Bedingungen:\n"
+"\n"
+"Der obige Urheberrechtsvermerk und dieser Erlaubnisvermerk sind in allen \n"
+"Kopien oder Teilkopien der Software beizulegen.\n"
+"\n"
+"DIE SOFTWARE WIRD OHNE JEDE AUSDRÜCKLICHE ODER IMPLIZIERTE GARANTIE \n"
+"BEREITGESTELLT, EINSCHLIESSLICH DER GARANTIE ZUR BENUTZUNG FÜR DEN \n"
+"VORGESEHENEN ODER EINEM BESTIMMTEN ZWECK SOWIE JEGLICHER \n"
+"RECHTSVERLETZUNG, JEDOCH NICHT DARAUF BESCHRÄNKT. IN KEINEM FALL \n"
+"SIND DIE AUTOREN ODER COPYRIGHTINHABER FÜR JEGLICHEN SCHADEN ODER\n"
+" SONSTIGE ANSPRÜCHE HAFTBAR ZU MACHEN, OB INFOLGE DER ERFÜLLUNG \n"
+"EINES VERTRAGES, EINES DELIKTES ODER ANDERS IM ZUSAMMENHANG MIT \n"
+"DER SOFTWARE ODER SONSTIGER VERWENDUNG DER SOFTWARE ENTSTANDEN."
+
+#: resources/gui/main.glade:8
+msgid "Gnome 2048"
+msgstr "Gnome 2048"
+
+#: resources/gui/main.glade:27
+msgid "New game"
+msgstr "Neues Spiel"
+
+#: resources/gui/main.glade:51
+msgid "Undo"
+msgstr "Rückgängig"
+
+#: resources/gui/main.glade:65
+msgid "Redo"
+msgstr "Wiederholen"
+
+#: resources/gui/main.glade:89
 msgctxt "Application title"
 msgid "Gnome 2048"
 msgstr "Gnome 2048"
 
-#: resources/gui/main.glade:26
-msgid "New game"
-msgstr "Neues Spiel"
-
-#: resources/gui/main.glade:50
-msgid "Undo"
-msgstr "Zug rückgängig"
-
-#: resources/gui/main.glade:64
-msgid "Redo"
-msgstr "Zug wiederholen"
-
-#: resources/gui/main.glade:113
+#: resources/gui/main.glade:114
 msgid "Close"
-msgstr "Schließen"
+msgstr "Beenden"
 
 #: resources/gui/theme_selection.glade:16
 msgid "Select theme"

@@ -5,7 +5,7 @@ class GmenuController(object):
         self.app = app
 
         self.menu = Gio.Menu()
-        self.menu.append(_("About"), "app.about")
+        self.menu.append(_("About Gnome 2048"), "app.about")
         self.menu.append(_("Quit"), "app.quit")
 
         about_action = Gio.SimpleAction.new("about", None)
