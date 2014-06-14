@@ -1,5 +1,6 @@
 from gi.overrides.Gio import Gio
 
+
 class GmenuController(object):
     def __init__(self, app):
         self.app = app

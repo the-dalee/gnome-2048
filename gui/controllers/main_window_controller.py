@@ -3,14 +3,14 @@ from gi.repository import Gtk
 from gi.overrides import Gdk
 from core.model.commands.engine import SetState
 from core.model.game_state import GameState
-import os
+from os import path
 
 
 class MainWindowController(object):
     def __init__(self, game_engine, data_dir, current_theme="classic"):
         self._builder = Gtk.Builder()
-        glade_file = os.path.join(data_dir, "gui", "main.glade")
-        style_file = os.path.join(data_dir, "themes", current_theme, "main.css")
+        glade_file = path.join(data_dir, "gui", "main.glade")
+        style_file = path.join(data_dir, "themes", current_theme, "main.css")
 
         self._builder.set_translation_domain("gnome-2048")
         self._builder.add_from_file(glade_file)
@@ -44,13 +44,13 @@ class MainWindowController(object):
 
         self.keyboard_box = self._builder.get_object("keyboard_box")
 
-        self.messageOverlay = self._builder.get_object("board_overlay")
-        self.messageOverlayText = Gtk.Label()
-        self.messageOverlayText.set_halign(Gtk.Align.FILL)
-        self.messageOverlayText.set_valign(Gtk.Align.FILL)
-        self.messageOverlayText.get_style_context().add_class("message_overlay")
-        self.messageOverlayText.size_request()
-        self.messageOverlay.add_overlay(self.messageOverlayText)
+        self.msgOverlay = self._builder.get_object("board_overlay")
+        self.msgOverlayLabel = Gtk.Label()
+        self.msgOverlayLabel.set_halign(Gtk.Align.FILL)
+        self.msgOverlayLabel.set_valign(Gtk.Align.FILL)
+        self.msgOverlayLabel.get_style_context().add_class("message_overlay")
+        self.msgOverlayLabel.size_request()
+        self.msgOverlay.add_overlay(self.msgOverlayLabel)
 
         handlers = {
             "move_up_clicked": self.move_up_clicked,
@@ -121,7 +121,7 @@ class MainWindowController(object):
         self.set_tile(self.tile_32, self.engine.board.tiles[3, 2])
         self.set_tile(self.tile_33, self.engine.board.tiles[3, 3])
         pass
-    
+
     def set_tile(self, label, tile):
         label.get_style_context().remove_class("tile-2")
         label.get_style_context().remove_class("tile-4")
@@ -157,27 +157,27 @@ class MainWindowController(object):
                 label.get_style_context().add_class("tile-1024")
             elif tile.value == 2048:
                 label.get_style_context().add_class("tile-2048")
-        
+
             label.set_text(str(tile.value))
         else:
             label.set_text("")
- 
+
     def notify_command(self, command):
         print(command.description)
         self.display_tiles()
-        
+
         if isinstance(command, SetState):
             self.show_hide_message()
- 
+
     def show_hide_message(self):
         if self.engine.state == GameState.Lost:
-            self.messageOverlayText.set_text(_("Game over"))
-            self.messageOverlayText.show_all()
+            self.msgOverlayLabel.set_text(_("Game over"))
+            self.msgOverlayLabel.show_all()
         elif self.engine.state == GameState.Won:
-            self.messageOverlayText.set_text(_("You won"))
-            self.messageOverlayText.show_all()
+            self.msgOverlayLabel.set_text(_("You won"))
+            self.msgOverlayLabel.show_all()
         else:
-            self.messageOverlayText.hide()
+            self.msgOverlayLabel.hide()
 
     def show(self):
         self.window.show()
@@ -188,14 +188,14 @@ class MainWindowController(object):
             self.window.unmaximize()
         else:
             self.window.maximize()
-        
+
     def window_state_changed(self, window, args):
         new_state = args.new_window_state
         if new_state & Gdk.Gdk.WindowState.MAXIMIZED:
             self.maximized = True
         else:
             self.maximized = False
-            
+
     def key_released(self, window, args):
         keycode = args.get_keycode()[1]
 
@@ -207,25 +207,21 @@ class MainWindowController(object):
             self.move(Direction.Right)
         if keycode == 116:
             self.move(Direction.Down)
-                
+
     def move(self, direction):
-        if (self.engine.state == GameState.InProgress or 
+        if (self.engine.state == GameState.InProgress or
             self.engine.state == GameState.Pending):
             self.engine.move(direction)
-                
+
     def set_keyboard_visibility(self, visible):
         if visible:
             self.keyboard_box.show_all()
         else:
             self.keyboard_box.hide()
-            
-            
+
     def get_overlay_child_position(self, widget, rectangle, data):
-        x = 0
-        y = 0
-        width = self.messageOverlay.get_allocated_width()
-        height = self.messageOverlay.get_allocated_height()
-        data.width = width 
+        width = self.msgOverlay.get_allocated_width()
+        height = self.msgOverlay.get_allocated_height()
+        data.width = width
         data.height = height
         return True
-        
