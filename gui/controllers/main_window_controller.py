@@ -198,15 +198,21 @@ class MainWindowController(object):
             
     def key_released(self, window, args):
         keycode = args.get_keycode()[1]
+
         if keycode == 111:
-            self.engine.move(Direction.Up)
+            self.move(Direction.Up)
         if keycode == 113:
-            self.engine.move(Direction.Left)
+            self.move(Direction.Left)
         if keycode == 114:
-            self.engine.move(Direction.Right)
+            self.move(Direction.Right)
         if keycode == 116:
-            self.engine.move(Direction.Down)
-            
+            self.move(Direction.Down)
+                
+    def move(self, direction):
+        if (self.engine.state == GameState.InProgress or 
+            self.engine.state == GameState.Pending):
+            self.engine.move(direction)
+                
     def set_keyboard_visibility(self, visible):
         if visible:
             self.keyboard_box.show_all()
