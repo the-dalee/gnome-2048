@@ -38,7 +38,8 @@ install: all
 	rsync -rupE resources $(DESTDIR)/resources/
 	install --mode=755 gnome-2048.py $(TARGET)
 	install --mode=755 i18n.py $(TARGET)
-	
+	install --mode=755 properties.py $(TARGET)
+		
 	install --mode=744 locales/de_DE/LC_MESSAGES/*.mo $(LOCALES)/de_DE/LC_MESSAGES/
 	
 

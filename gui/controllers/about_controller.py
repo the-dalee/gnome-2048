@@ -1,6 +1,6 @@
 from gi.repository import Gtk
 import os
-from propeties import Properties
+from properties import Properties
 
 
 class AboutController(object):
