@@ -8,7 +8,6 @@
     <property name="title" translatable="yes">Gnome 2048</property>
     <property name="hide_titlebar_when_maximized">True</property>
     <property name="icon_name">gnome-2048</property>
-    <property name="decorated">False</property>
     <signal name="key-release-event" handler="key_released" swapped="no"/>
     <signal name="window-state-event" handler="window_state_changed" swapped="no"/>
     <child>
@@ -83,21 +82,7 @@
                     <property name="orientation">vertical</property>
                     <property name="homogeneous">True</property>
                     <child>
-                      <object class="GtkLabel" id="label1">
-                        <property name="visible">True</property>
-                        <property name="can_focus">False</property>
-                        <property name="label" translatable="yes" context="Application title">Gnome 2048</property>
-                        <property name="width_chars">0</property>
-                        <property name="max_width_chars">0</property>
-                        <attributes>
-                          <attribute name="weight" value="bold"/>
-                        </attributes>
-                      </object>
-                      <packing>
-                        <property name="expand">True</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
+                      <placeholder/>
                     </child>
                   </object>
                 </child>
@@ -105,20 +90,6 @@
               <packing>
                 <property name="expand">True</property>
                 <property name="homogeneous">True</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkToolButton" id="button_exit">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="label" translatable="yes">Close</property>
-                <property name="use_underline">True</property>
-                <property name="icon_name">window-close</property>
-                <signal name="clicked" handler="exit_clicked" swapped="no"/>
-              </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="homogeneous">False</property>
               </packing>
             </child>
             <style>
