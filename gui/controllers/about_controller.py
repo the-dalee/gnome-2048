@@ -1,5 +1,6 @@
 from gi.repository import Gtk
 import os
+from propeties import Properties
 
 
 class AboutController(object):
@@ -11,7 +12,10 @@ class AboutController(object):
         self._builder.add_from_file(glade_file)
         self.window = self._builder.get_object("about_window")
         self.window.set_decorated(True)
-
+        self.window.set_version(Properties.VERSION)
+        self.window.set_name(Properties.NAME)
+        self.window.set_copyright(Properties.COPYRIGHT)
+        
     def show(self):
         self.window.run()
         self.window.hide()
