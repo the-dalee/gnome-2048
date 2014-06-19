@@ -42,9 +42,6 @@ install: all
 		
 	install --mode=744 locales/de_DE/LC_MESSAGES/*.mo $(LOCALES)/de_DE/LC_MESSAGES/
 	
-
-	install --mode=744 resources/gui/*.glade $(GLADES) 
-	
 	install --mode=744 resources/themes/classic/*.css $(THEMES)/classic/
 	
 	install --mode=744 environment/gnome-2048.desktop $(APPLICATIONS)

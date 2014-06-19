@@ -8,7 +8,10 @@ class AboutController(object):
         self._builder = Gtk.Builder()
         self._builder.set_translation_domain("gnome-2048")
 
-        glade_file = os.path.join(data_dir, "gui", "about.glade")
+        exec_path = os.path.realpath(__file__)
+        exec_dir = os.path.dirname(exec_path)
+        
+        glade_file = os.path.join(exec_dir, "..", "views", "about.glade")
         self._builder.add_from_file(glade_file)
         self.window = self._builder.get_object("about_window")
         self.window.set_decorated(True)

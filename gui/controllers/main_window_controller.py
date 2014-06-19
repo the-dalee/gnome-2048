@@ -4,12 +4,17 @@ from gi.overrides import Gdk
 from core.model.commands.engine import SetState
 from core.model.game_state import GameState
 from os import path
+import os
 
 
 class MainWindowController(object):
     def __init__(self, game_engine, data_dir, current_theme="classic"):
         self._builder = Gtk.Builder()
-        glade_file = path.join(data_dir, "gui", "main.glade")
+        
+        exec_path = os.path.realpath(__file__)
+        exec_dir = os.path.dirname(exec_path)
+        glade_file = path.join(exec_dir, "..", "views", "main.glade")
+        
         style_file = path.join(data_dir, "themes", current_theme, "main.css")
 
         self._builder.set_translation_domain("gnome-2048")
