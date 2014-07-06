@@ -62,10 +62,11 @@ are also appreciated.
 If you are familiar with the gettext files, you can send me a pull request with 
 translated po file based on the existing directory structure:
 
-```locales/{LANG_CODE}/LC_MESSAGES/gnome-2048.po```
+```
+	locales/{LANG_CODE}/LC_MESSAGES/gnome-2048.po
+```
 
 If not, please just contact me via e-mail.
-
 
 Contact
 ==================
