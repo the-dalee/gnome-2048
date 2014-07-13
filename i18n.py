@@ -1,16 +1,12 @@
 import gettext
 import locale
-import os
-exec_path = os.path.realpath(__file__)
-exec_dir = os.path.dirname(exec_path)
-locale.setlocale(locale.LC_ALL, '')
-locales_dir = os.path.join(exec_dir, "locales", "")
+from properties import Properties, Directories
+
 
 current_locale, encoding = locale.getlocale()
+locale.bindtextdomain(Properties.PACKAGE_NAME, Directories.APP_LOCALES)
 
-locale.bindtextdomain('gnome-2048', locales_dir)
-
-t = gettext.translation('gnome-2048', locales_dir,
+t = gettext.translation(Properties.PACKAGE_NAME, Directories.APP_LOCALES,
                         [current_locale], fallback=True)
 
 t.install()

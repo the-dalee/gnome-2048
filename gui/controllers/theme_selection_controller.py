@@ -1,45 +1,39 @@
 from gi.repository import Gtk
 import os
+from properties import Directories, Properties
 
 
 class ThemeSelectionController(object):
-    def __init__(self, data_dir, user_config_dir):
+    def __init__(self):
         self._builder = Gtk.Builder()
-        glade_file = os.path.join(data_dir, "gui", "theme_selection.glade")
+        glade_file = os.path.join(Directories.APP_GLADES,
+                                  "theme_selection.glade")
 
         self._builder.add_from_file(glade_file)
-        self._builder.set_translation_domain("gnome-2048")
+        self._builder.set_translation_domain(Properties.PACKAGE_NAME)
         self.window = self._builder.get_object("theme_selection_window")
         self.theme_store = self._builder.get_object("theme_selection_store")
-        self.data_dir = data_dir
-        self.user_config_dir = user_config_dir
 
         self.themes = self.get_theme_dictionary()
         self.theme_changed_observers = list()
 
     def get_theme_dictionary(self):
-        global_themes_dir = os.path.join(self.data_dir, "themes", "")
-        global_themes_dir = os.path.expanduser(global_themes_dir)
-
-        user_themes_dir = os.path.join(self.user_config_dir, "themes", "")
-        user_themes_dir = os.path.expanduser(user_themes_dir)
-
         global_themes = list()
         user_themes = list()
 
         try:
-            global_themes = [(name, os.path.join(global_themes_dir, name))
-                             for name in os.listdir(global_themes_dir)
+            global_themes = [(name, os.path.join(Directories.APP_THEMES, name))
+                             for name in os.listdir(Directories.APP_THEMES)
                              if os.path.isdir(
-                                        os.path.join(global_themes_dir, name))]
+                                        os.path.join(Directories.APP_THEMES, name))]
         except:
             global_themes = list()
 
         try:
-            user_themes = [(name, os.path.join(user_themes_dir, name))
-                           for name in os.listdir(user_themes_dir)
+            user_themes = [(name, os.path.join(Directories.USER_THEMES, name))
+                           for name in os.listdir(Directories.USER_THEMES)
                            if os.path.isdir(
-                                        os.path.join(user_themes_dir, name))]
+                                        os.path.join(Directories.USER_THEMES, name))]
         except:
             user_themes = list()
 
