@@ -8,18 +8,14 @@ from properties import Directories, Properties
 
 
 class MainWindowController(object):
-    def __init__(self, game_engine, current_theme="classic"):
+    def __init__(self, game_engine, css_provider):
         self._builder = Gtk.Builder()
 
         glade_file = path.join(Directories.APP_GLADES, "main.glade")
-        style_file = path.join(Directories.APP_THEMES, current_theme, "main.css")
-
         self._builder.set_translation_domain(Properties.PACKAGE_NAME)
         self._builder.add_from_file(glade_file)
         self.window = self._builder.get_object("main_window")
 
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_path(style_file)
         context = Gtk.StyleContext()
         context.add_provider_for_screen(self.window.get_screen(),
                                         css_provider,
