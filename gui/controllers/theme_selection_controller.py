@@ -11,11 +11,17 @@ class ThemeSelectionController(object):
 
         self._builder.add_from_file(glade_file)
         self._builder.set_translation_domain(Properties.PACKAGE_NAME)
+               
         self.window = self._builder.get_object("theme_selection_window")
         self.theme_store = self._builder.get_object("theme_selection_store")
 
         self.themes = self.get_theme_dictionary()
         self.theme_changed_observers = list()
+        
+        handlers = {
+            "cursor_changed": self.cursor_changed,
+            }
+        self._builder.connect_signals(handlers)
 
     def get_theme_dictionary(self):
         global_themes = list()
@@ -42,9 +48,14 @@ class ThemeSelectionController(object):
     def show(self):
         self.theme_store.clear()
         for theme in self.themes:
-            self.theme_store.append((theme[0],))
+            self.theme_store.append((theme[0], theme[1]))
         self.window.run()
         self.window.hide()
+        
+    def cursor_changed(self, tree_view):
+        (model, iter) = tree_view.get_selection().get_selected()
+        value = model.get_value(iter, 1)
+        self.notify_theme_changed(value)
 
     def register_theme_changed(self, observer):
         self.theme_changed_observers.append(observer)
