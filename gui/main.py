@@ -16,13 +16,14 @@ class Gnome2048Application(Gtk.Application):
 
         current_theme = "classic"
         style_file = path.join(Directories.APP_THEMES, current_theme, "main.css")
-        css_provider = Gtk.CssProvider()
-        css_provider.load_from_path(style_file)
+        self.css_provider = Gtk.CssProvider()
+        self.css_provider.load_from_path(style_file)
 
-        self.main_window_controller = MainWindowController(engine, css_provider)
+        self.main_window_controller = MainWindowController(engine, self.css_provider)
 
         self.theme_selection_controller = ThemeSelectionController()
         self.theme_selection_controller.window.set_transient_for(self.main_window_controller.window)
+        self.theme_selection_controller.register_theme_changed(self)
 
         self.gmenu_controller = GmenuController(self)
         self.about_controller = AboutController()
@@ -43,3 +44,8 @@ class Gnome2048Application(Gtk.Application):
 
     def show_about(self):
         self.about_controller.show()
+        
+    def theme_changed(self, theme):
+        main_css = path.join(theme, "main.css")
+        self.css_provider.load_from_path(main_css)
+        

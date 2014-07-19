@@ -62,4 +62,4 @@ class ThemeSelectionController(object):
 
     def notify_theme_changed(self, file):
         for o in self.theme_changed_observers:
-            o.style_changed(file)
+            o.theme_changed(file)
