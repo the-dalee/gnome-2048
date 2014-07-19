@@ -18,5 +18,6 @@ class Directories:
     APP_THEMES = path.join(APP_RESOURCES, "themes", "")
 
     USER_CONFIG_DIR = path.join(path.expanduser("~"),
+                                ".config",
                                 Properties.PACKAGE_NAME, "")
     USER_THEMES = path.join(USER_CONFIG_DIR, "themes", "")
