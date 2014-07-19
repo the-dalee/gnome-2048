@@ -43,7 +43,8 @@ class ThemeSelectionController(object):
         self.theme_store.clear()
         for theme in self.themes:
             self.theme_store.append((theme[0],))
-        self.window.show()
+        self.window.run()
+        self.window.hide()
 
     def register_theme_changed(self, observer):
         self.theme_changed_observers.append(observer)
