@@ -20,6 +20,7 @@ class ThemeSelectionController(object):
         
         handlers = {
             "cursor_changed": self.cursor_changed,
+            "close_button_clicked": self.close
             }
         self._builder.connect_signals(handlers)
 
@@ -50,6 +51,9 @@ class ThemeSelectionController(object):
         for theme in self.themes:
             self.theme_store.append((theme[0], theme[1]))
         self.window.run()
+        self.window.hide()
+    
+    def close(self, button):
         self.window.hide()
         
     def cursor_changed(self, tree_view):
