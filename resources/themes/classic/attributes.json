@@ -1,24 +1,24 @@
 {
 	"name" : 
 	{
-		"en" : "Classic",
-		"de" : "Klassisch",
-		"pl" : "Klasyczny"
+		"en_US" : "Classic",
+		"de_DE" : "Klassisch",
+		"pl_PL" : "Klasyczny"
 	},
 	
 	"description" : 
 	{
-		"en" : "Classic theme based on original 2048 game by Gabriele Cirulli",
-		"de" : "Klassisches Motiv bassierend auf dem ursprünglichen 2048 Spiel von Gabriele Cirulli",
-		"pl" : "Motyw klasyczny bazujący na originalnej grze 2048 stworzonej przez Gabriele Cirulli"
-	}
+		"en_US" : "Classic theme based on original 2048 game by Gabriele Cirulli",
+		"de_DE" : "Klassisches Motiv bassierend auf dem ursprünglichen 2048 Spiel von Gabriele Cirulli",
+		"pl_PL" : "Motyw klasyczny bazujący na originalnej grze 2048 stworzonej przez Gabriele Cirulli"
+	},
 	
 	"copyright" : "Copyright © 2014 Damian Lippok",
 	
 	"license" : 
 	{
-		"en" : "The MIT License (MIT): See COPYING file for more details",
-		"de" : "The MIT License (MIT): Weitere Informationen finden Sie in der Daten COPYING",
-		"pl" : "The MIT License (MIT): Dodatkowe informacje dostępne w pliku COPYING"
+		"en_US" : "The MIT License (MIT): See COPYING file for more details",
+		"de_DE" : "The MIT License (MIT): Weitere Informationen finden Sie in der Daten COPYING",
+		"pl_PL" : "The MIT License (MIT): Dodatkowe informacje dostępne w pliku COPYING"
 	}
 }

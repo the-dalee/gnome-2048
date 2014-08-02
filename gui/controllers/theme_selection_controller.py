@@ -1,6 +1,7 @@
 from gi.repository import Gtk
 import os
 from properties import Directories, Properties
+from model.themes import ThemeAttributes
 
 
 class ThemeSelectionController(object):
@@ -29,27 +30,40 @@ class ThemeSelectionController(object):
         user_themes = list()
 
         try:
-            global_themes = [(name, os.path.join(Directories.APP_THEMES, name))
+            global_themes = [self.get_theme_attributes(os.path.join(Directories.APP_THEMES, name))
                              for name in os.listdir(Directories.APP_THEMES)
                              if os.path.isdir(
                                         os.path.join(Directories.APP_THEMES, name))]
-        except:
+        except  Exception as e:
+            print(e)
             global_themes = list()
 
         try:
-            user_themes = [(name, os.path.join(Directories.USER_THEMES, name))
+            user_themes = [self.get_theme_attributes(os.path.join(Directories.USER_THEMES, name))
                            for name in os.listdir(Directories.USER_THEMES)
                            if os.path.isdir(
                                         os.path.join(Directories.USER_THEMES, name))]
-        except:
+        except Exception as e:
+            print(e)
             user_themes = list()
 
         return global_themes + user_themes
 
+    def get_theme_attributes(self, theme_path):
+        attributes = ThemeAttributes()
+        attributes.path = theme_path
+        json_path = os.path.join(theme_path, "attributes.json")
+
+        with open(json_path, 'r') as file:
+            json_string = file.read()
+            attributes.read_json_string(json_string)
+
+        return attributes
+
     def show(self):
         self.theme_store.clear()
         for theme in self.themes:
-            self.theme_store.append((theme[0], theme[1]))
+            self.theme_store.append((theme.name, theme.path))
         self.window.run()
         self.window.hide()
     

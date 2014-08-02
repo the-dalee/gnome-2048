@@ -1,4 +1,5 @@
 import locale
+import json
 
 
 class ThemeAttributes(object):
@@ -35,3 +36,11 @@ class ThemeAttributes(object):
             return translations["en_UK"]
         else:
             return dict.popitem()[1]
+
+    def read_json_string(self, json_string):
+        compiled = json.loads(json_string)
+        self.localized_name = compiled["name"]
+        self.localized_description = compiled["description"]
+        self.localized_license = compiled["license"]
+        self.copyright = compiled["copyright"]
+        
