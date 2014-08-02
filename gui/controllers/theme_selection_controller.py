@@ -8,9 +8,9 @@ class ThemeSelectionController(object):
         self._builder = Gtk.Builder()
         glade_file = os.path.join(Directories.APP_GLADES,
                                   "theme_selection.glade")
-
-        self._builder.add_from_file(glade_file)
         self._builder.set_translation_domain(Properties.PACKAGE_NAME)
+        self._builder.add_from_file(glade_file)
+
                
         self.window = self._builder.get_object("theme_selection_window")
         self.theme_store = self._builder.get_object("theme_selection_store")
