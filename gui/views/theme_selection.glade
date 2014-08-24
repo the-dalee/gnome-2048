@@ -8,6 +8,8 @@
       <column type="gchararray"/>
       <!-- column-name Path -->
       <column type="gchararray"/>
+      <!-- column-name PyObject1 -->
+      <column type="PyObject"/>
     </columns>
   </object>
   <object class="GtkDialog" id="theme_selection_window">

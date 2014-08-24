@@ -19,6 +19,11 @@ class ThemeSelectionController(object):
         self.themes = self.get_theme_dictionary()
         self.theme_changed_observers = list()
         
+        self.theme_descr = self._builder.get_object("theme_description_label")
+        self.theme_copy = self._builder.get_object("theme_copyright_label")
+        self.theme_license = self._builder.get_object("theme_license_label")
+        
+        
         handlers = {
             "cursor_changed": self.cursor_changed,
             "close_button_clicked": self.close
@@ -36,7 +41,7 @@ class ThemeSelectionController(object):
                                         os.path.join(Directories.APP_THEMES, name))]
         except  Exception as e:
             print(e)
-            global_themes = list()
+            global_themes = dict()
 
         try:
             user_themes = [self.get_theme_attributes(os.path.join(Directories.USER_THEMES, name))
@@ -45,7 +50,7 @@ class ThemeSelectionController(object):
                                         os.path.join(Directories.USER_THEMES, name))]
         except Exception as e:
             print(e)
-            user_themes = list()
+            user_themes = dict()
 
         return global_themes + user_themes
 
@@ -63,7 +68,7 @@ class ThemeSelectionController(object):
     def show(self):
         self.theme_store.clear()
         for theme in self.themes:
-            self.theme_store.append((theme.name, theme.path))
+            self.theme_store.append((theme.name, theme.path, theme))
         self.window.run()
         self.window.hide()
     
@@ -73,6 +78,10 @@ class ThemeSelectionController(object):
     def cursor_changed(self, tree_view):
         (model, iter) = tree_view.get_selection().get_selected()
         value = model.get_value(iter, 1)
+        theme = model.get_value(iter, 2)
+        self.theme_descr.set_text(theme.description)
+        self.theme_license.set_text(theme.license)
+        self.theme_copy.set_text(theme.copyright)
         self.notify_theme_changed(value)
 
     def register_theme_changed(self, observer):

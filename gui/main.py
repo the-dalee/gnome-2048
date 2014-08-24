@@ -40,8 +40,12 @@ class Gnome2048Application(Gtk.Application):
         Gtk.Application.do_startup(self)
         
     def show_theme_selection(self):
-        self.theme_selection_controller.show()
-
+        try:
+            self.theme_selection_controller.show()
+        except Exception as e:
+            print(e)
+            raise
+        
     def show_about(self):
         self.about_controller.show()
         

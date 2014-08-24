@@ -17,7 +17,7 @@ class ThemeAttributes(object):
         return self.get_localized(self.localized_name)
 
     def get_license(self):
-        return self.get_localized(self.localized_name)
+        return self.get_localized(self.localized_license)
 
     description = property(get_description)
     name = property(get_name)
