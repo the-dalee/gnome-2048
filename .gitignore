@@ -24,7 +24,7 @@ var/
 
 # Eclipse
 .project
-.pydevproject 
+.pydevproject
 .settings
 .externalToolBuilders
 
