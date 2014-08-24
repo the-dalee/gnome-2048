@@ -20,9 +20,6 @@ class ThemeSelectionController(object):
         self.theme_changed_observers = list()
         
         self.theme_descr = self._builder.get_object("theme_description_label")
-        self.theme_copy = self._builder.get_object("theme_copyright_label")
-        self.theme_license = self._builder.get_object("theme_license_label")
-        
         
         handlers = {
             "cursor_changed": self.cursor_changed,
@@ -79,9 +76,16 @@ class ThemeSelectionController(object):
         (model, iter) = tree_view.get_selection().get_selected()
         value = model.get_value(iter, 1)
         theme = model.get_value(iter, 2)
-        self.theme_descr.set_text(theme.description)
-        self.theme_license.set_text(theme.license)
-        self.theme_copy.set_text(theme.copyright)
+
+        descr_text = ""
+        if theme.description:
+            descr_text = descr_text + theme.description + "\n\n";
+        if theme.license:
+            descr_text = descr_text + theme.license + "\n\n";
+        if theme.copyright:
+            descr_text = descr_text + theme.copyright;
+        self.theme_descr.set_text(descr_text)
+
         self.notify_theme_changed(value)
 
     def register_theme_changed(self, observer):
