@@ -10,15 +10,11 @@
     <property name="icon_name">gnome-2048</property>
     <signal name="key-release-event" handler="key_released" swapped="no"/>
     <signal name="window-state-event" handler="window_state_changed" swapped="no"/>
-    <child>
-      <object class="GtkBox" id="box3">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="orientation">vertical</property>
-        <child>
-          <object class="GtkToolbar" id="toolbar1">
+    <child type="titlebar">
+          <object class="GtkHeaderBar" id="toolbar1">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
+            <property name="show-close-button">True</property>
             <child>
               <object class="GtkToolButton" id="button_reset">
                 <property name="visible">True</property>
@@ -38,11 +34,7 @@
                 <property name="visible">True</property>
                 <property name="can_focus">False</property>
               </object>
-              <packing>
-                <property name="expand">False</property>
-                <property name="homogeneous">False</property>
-              </packing>
-            </child>
+             </child>
             <child>
               <object class="GtkToolButton" id="button_undo">
                 <property name="visible">True</property>
@@ -87,22 +79,15 @@
                   </object>
                 </child>
               </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="homogeneous">True</property>
-              </packing>
             </child>
-            <style>
-              <class name="primary-toolbar"/>
-              <class name="light"/>
-            </style>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
         </child>
+    
+    <child>
+      <object class="GtkBox" id="box3">
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="orientation">vertical</property>
         <child>
           <object class="GtkBox" id="box5">
             <property name="visible">True</property>
