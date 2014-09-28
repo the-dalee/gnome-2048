@@ -13,7 +13,7 @@ class UserConfigManager(object):
             with open(self.config_path, 'r') as f:
                 compiled = json.load(f)
                 config.theme = compiled["theme"]
-        except IOError:
+        except (IOError, ValueError):
             print("Error while reading config file", file=sys.stderr)
             config.load_defaults()
         return config
@@ -21,6 +21,7 @@ class UserConfigManager(object):
     def save(self, config):
         try:
             with open(self.config_path, 'w') as f:
-                json.dump(config, f)
-        except IOError:
+                compiled = {"theme" : config.theme}
+                json.dump(compiled, f)
+        except (IOError, ValueError):
             print("Error while writting config file")
