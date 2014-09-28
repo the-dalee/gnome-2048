@@ -14,11 +14,7 @@ class Gnome2048Application(Gtk.Application):
         Gtk.Application.__init__(self)
         engine = GameEngine()
 
-        current_theme = "classic"
-        style_file = path.join(Directories.APP_THEMES, current_theme, "main.css")
         self.css_provider = Gtk.CssProvider()
-        self.css_provider.load_from_path(style_file)
-
         self.main_window_controller = MainWindowController(engine, self.css_provider)
 
         self.theme_selection_controller = ThemeSelectionController()
@@ -30,6 +26,10 @@ class Gnome2048Application(Gtk.Application):
         about_win = self.about_controller.window
         main_win = self.main_window_controller.window
         about_win.set_transient_for(main_win)
+        self.load_theme()
+
+    def load_theme(self):
+        self.theme_changed(Directories.APP_DEFAULT_THEME)
 
     def do_activate(self):
         self.set_app_menu(self.gmenu_controller.menu)

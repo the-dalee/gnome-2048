@@ -16,6 +16,7 @@ class Directories:
     APP_LOCALES = path.join(APPLICATION, "locales", "")
 
     APP_THEMES = path.join(APP_RESOURCES, "themes", "")
+    APP_DEFAULT_THEME = path.join(APP_THEMES, "classic", "")
 
     USER_CONFIG_DIR = path.join(path.expanduser("~"),
                                 ".config",
