@@ -15,6 +15,7 @@ class ThemeSelectionController(object):
                
         self.window = self._builder.get_object("theme_selection_window")
         self.theme_store = self._builder.get_object("theme_selection_store")
+        self.theme_selection = self._builder.get_object("treeview-selection")
 
         self.themes = self.get_theme_dictionary()
         self.theme_changed_observers = list()
@@ -62,10 +63,13 @@ class ThemeSelectionController(object):
 
         return attributes
 
-    def show(self):
+    def show(self, cur_theme):
         self.theme_store.clear()
         for theme in self.themes:
-            self.theme_store.append((theme.name, theme.path, theme))
+            iter = self.theme_store.append((theme.name, theme.path, theme))
+            if theme.path == cur_theme:
+                self.display_theme_info(theme)
+                self.theme_selection.select_iter(iter)
         self.window.run()
         self.window.hide()
     
@@ -76,7 +80,10 @@ class ThemeSelectionController(object):
         (model, iter) = tree_view.get_selection().get_selected()
         value = model.get_value(iter, 1)
         theme = model.get_value(iter, 2)
-
+        self.display_theme_info(theme)
+        self.notify_theme_changed(value)
+    
+    def display_theme_info(self, theme):
         descr_text = ""
         if theme.description:
             descr_text = descr_text + theme.description + "\n\n";
@@ -85,8 +92,7 @@ class ThemeSelectionController(object):
         if theme.copyright:
             descr_text = descr_text + theme.copyright;
         self.theme_descr.set_text(descr_text)
-
-        self.notify_theme_changed(value)
+        
 
     def register_theme_changed(self, observer):
         self.theme_changed_observers.append(observer)

@@ -52,7 +52,7 @@ class Gnome2048Application(Gtk.Application):
 
     def show_theme_selection(self):
         try:
-            self.theme_selection_controller.show()
+            self.theme_selection_controller.show(self.user_config.theme)
         except Exception as e:
             print(e)
             raise
