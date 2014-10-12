@@ -1,6 +1,6 @@
 GtkWindow
 {
-	
+	 
 }
 
 .tile
@@ -8,6 +8,7 @@ GtkWindow
 	font-weight: bold;
 	background-color: rgba(238, 228, 218, 0.35); 
 	border-radius: 3px;
+
 }
 
  .tile-2 
@@ -106,7 +107,6 @@ GtkWindow
 {
 	background: #bbada0;
   	border-radius: 6px;
-	
 }
 
 .message_overlay

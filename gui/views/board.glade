@@ -11,6 +11,8 @@
             <property name="valign">center</property>
             <property name="margin_top">24</property>
             <property name="margin_bottom">24</property>
+            <property name="margin_left">24</property>
+            <property name="margin_right">24</property>
             <property name="row_homogeneous">True</property>
             <property name="column_homogeneous">True</property>
             <child>
@@ -23,6 +25,8 @@
                 <property name="valign">center</property>
                 <property name="margin_top">12</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -43,6 +47,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">12</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -63,6 +69,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">12</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -83,6 +91,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">12</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">12</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -103,6 +113,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -123,6 +135,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -143,6 +157,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -163,6 +179,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">12</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -183,6 +201,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -203,6 +223,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -223,6 +245,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -243,6 +267,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">6</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">12</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -263,6 +289,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">12</property>
+                <property name="margin_left">12</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -283,6 +311,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">12</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -303,6 +333,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">12</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">6</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
@@ -323,6 +355,8 @@
                 <property name="can_focus">False</property>
                 <property name="margin_top">6</property>
                 <property name="margin_bottom">12</property>
+                <property name="margin_left">6</property>
+                <property name="margin_right">12</property>
                 <property name="hexpand">True</property>
                 <property name="vexpand">True</property>
                 <property name="label">0</property>
