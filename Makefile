@@ -10,6 +10,7 @@ LOCALES = $(TARGET)/locales
 PIXMAPS = $(DESTDIR)/usr/share/pixmaps
 ICONS = $(DESTDIR)/usr/share/icons/hicolor
 APPLICATIONS = $(DESTDIR)/usr/share/applications
+APPDATA = $(DESTDIR)/usr/share/appdata
 
 all: build-translations
 
@@ -47,6 +48,7 @@ install: all
 	install --mode=744 resources/themes/classic/* $(THEMES)/classic/
 	
 	install --mode=744 environment/gnome-2048.desktop $(APPLICATIONS)
+	install --mode=744 environment/gnome-2048.appdata.xml $(APPDATA)
 	install --mode=744 environment/icons/hicolor/scalable/apps/gnome-2048.svg $(ICONS)/scalable/apps
 	ln -s $(TARGET)/$(NAME).py $(BINDIR)/$(NAME)
 
@@ -61,6 +63,8 @@ uninstall:
 	rm $(BINDIR)/$(NAME)
 	rm $(ICONS)/scalable/apps/gnome-2048.svg
 	rm $(APPLICATIONS)/gnome-2048.desktop
+	rm $(APPDATA)/gnome-2048.appdata.xml
+	
 	
 .PHONY: install
 .PHONY: uninstall

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2014 Damian Lippok <mail.dalee@gmail.com> -->
+<application>
+ <id type="desktop">gnome-2048.desktop</id>
+ <metadata_license>CC-BY-3.0</metadata_license>
+ <project_license>MIT</project_license>
+ <name>Gnome 2048</name>
+ <summary>Remake of the 2048 game by Gabriele Cirulli</summary>
+ <description>
+  <p>
+   Use the cursor keys to move the tiles. When two tiles with the same number
+   touch, they will merge into one with its number doubled. After every move a
+   new tile with either 2 or 4 is spawned in a random free cell. Try merging 
+   the tiles into 2048 to win the game. The game is over when the board is full
+   and no more blocks can be spawned after your move. 
+  </p>
+  <p>
+  	Gnome 2048 is a remake of the 2048 game by Gabriele Cirulli GNOME and
+  	other GTK+ 3 compatible desktop environments.
+  </p>
+ </description>
+ <screenshots>
+  <screenshot type="default">https://raw.githubusercontent.com/the-dalee/gnome-2048/develop/environment/screenshots/main.png</screenshot>
+ </screenshots>
+ <url type="homepage">https://github.com/the-dalee/gnome-2048</url>
+ <updatecontact>mail.dalee@gmail.com</updatecontact>
+</application>
