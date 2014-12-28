@@ -1,5 +1,6 @@
 import i18n
 
+
 class EngineCommand(object):
     type = "Engine"
     description = "Do nothing with engine"
@@ -9,6 +10,24 @@ class EngineCommand(object):
 
     def undo(self):
         pass
+
+
+class AddScore(EngineCommand):
+    def __init__(self, engine, score):
+        self.engine = engine
+        self.last_score = engine.score
+        self.new_score = engine.score + score
+        
+        self.description = _("Add %(score)i points" %
+            {
+                "score": score,
+            })
+
+    def execute(self):
+        self.engine.score = self.new_score
+
+    def undo(self):
+        self.engine.score = self.last_score
 
 
 class SetState(EngineCommand):

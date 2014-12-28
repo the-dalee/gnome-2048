@@ -5,7 +5,7 @@ from random import Random
 from core.model.tile import Tile
 from core.model.commands.board import AddTile, MoveTile, MergeTile
 from core.model.jobs.job import Job
-from core.model.commands.engine import SetState
+from core.model.commands.engine import SetState, AddScore
 
 
 class GameEngine(object):
@@ -13,12 +13,14 @@ class GameEngine(object):
     undo_stack = []
     redo_stack = []
     state = None
+    score = 0
 
     def __init__(self):
         self.restart()
         self.undo_stack = list()
         self.redo_stack = list()
         self.command_observers = list()
+        self.score = 0
 
     def register(self, observer):
         self.command_observers.append(observer)
@@ -92,8 +94,12 @@ class GameEngine(object):
                 and self.board.tiles[next_full].value == tile.value
                 and not self.board.tiles[next_full].already_merged):
                     merge_command = MergeTile(self.board, coord, next_full)
+                    new_score = merge_command.destinationTile.value * 2
+                    add_score_command = AddScore(self, new_score)
                     self.execute_command(merge_command)
+                    self.execute_command(add_score_command)
                     job.add_commmand(merge_command)
+                    job.add_commmand(add_score_command) 
                     moved = True
                 else:
                     next_empty = self.board.next_free(coord, direction)
