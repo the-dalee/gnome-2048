@@ -10,10 +10,13 @@ LOCALES = $(TARGET)/locales
 PIXMAPS = $(DESTDIR)/usr/share/pixmaps
 ICONS = $(DESTDIR)/usr/share/icons/hicolor
 APPLICATIONS = $(DESTDIR)/usr/share/applications
+APPDATA = $(DESTDIR)/usr/share/appdata
+
+MANPAGE = /usr/share/man/man6
 
 all: build-translations
-
-
+	gzip -k environment/man/gnome-2048.6
+	
 %.mo: %.po
 	msgfmt -cv -o $@ $< 
 	
@@ -35,17 +38,22 @@ install: all
 	
 	rsync -rupE core $(TARGET)
 	rsync -rupE gui $(TARGET)
+	rsync -rupE model $(TARGET)
 	rsync -rupE resources $(DESTDIR)/resources/
+	
 	install --mode=755 gnome-2048.py $(TARGET)
 	install --mode=755 i18n.py $(TARGET)
 	install --mode=755 properties.py $(TARGET)
 		
 	install --mode=744 locales/de_DE/LC_MESSAGES/*.mo $(LOCALES)/de_DE/LC_MESSAGES/
-	
-	install --mode=744 resources/themes/classic/*.css $(THEMES)/classic/
+	install --mode=744 resources/themes/classic/* $(THEMES)/classic/
 	
 	install --mode=744 environment/gnome-2048.desktop $(APPLICATIONS)
+	install --mode=744 environment/gnome-2048.appdata.xml $(APPDATA)
 	install --mode=744 environment/icons/hicolor/scalable/apps/gnome-2048.svg $(ICONS)/scalable/apps
+	
+	install --mode=744 environment/man/*.gz $(MANPAGE)
+	
 	ln -s $(TARGET)/$(NAME).py $(BINDIR)/$(NAME)
 
 	
@@ -53,12 +61,15 @@ clean:
 	find .  -iregex "^.+\.mo" | xargs rm -f
 	find .  -iregex "^.+\~" | xargs rm -f
 	rm -fr .temp 
+	rm environment/man/*.gz
 	
 uninstall:
 	rm -rf $(TARGET)
 	rm $(BINDIR)/$(NAME)
 	rm $(ICONS)/scalable/apps/gnome-2048.svg
 	rm $(APPLICATIONS)/gnome-2048.desktop
+	rm $(APPDATA)/gnome-2048.appdata.xml
+	rm $(MANPAGE)/gnome-2048.6.gz
 	
 .PHONY: install
 .PHONY: uninstall

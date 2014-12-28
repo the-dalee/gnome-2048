@@ -24,7 +24,9 @@ var/
 
 # Eclipse
 .project
-.pydevproject 
+.pydevproject
+.settings
+.externalToolBuilders
 
 #Temporary files
 *~
