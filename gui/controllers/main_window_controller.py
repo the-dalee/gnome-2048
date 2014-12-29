@@ -6,6 +6,7 @@ from core.model.game_state import GameState
 from os import path
 from properties import Directories, Properties
 from gui.controllers.board_controller import BoardController
+from gui.controllers.sidebar_controller import SidebarController
 
 
 class MainWindowController(object):
@@ -25,15 +26,19 @@ class MainWindowController(object):
         self.window.connect("destroy", Gtk.main_quit)
         
         self.board = BoardController(game_engine)
-
+        self.sidebar = SidebarController(game_engine)
+        
         self.msgOverlay = self._builder.get_object("board_overlay")
         self.msgOverlayLabel = Gtk.Label()
         self.msgOverlayLabel.set_halign(Gtk.Align.FILL)
         self.msgOverlayLabel.set_valign(Gtk.Align.FILL)
         self.msgOverlayLabel.get_style_context().add_class("message_overlay")
         self.msgOverlayLabel.size_request()
-        self.msgOverlay.add_overlay(self.msgOverlayLabel)
-        self.msgOverlay.add(self.board.widget)
+        self.msgOverlay.add_overlay(self.msgOverlayLabel)#
+        
+        self.board_box = self._builder.get_object("board_box")
+        self.board_box.add(self.board.widget)
+        self.board_box.add(self.sidebar.widget)
 
         handlers = {
             "undo_clicked": self.undo_clicked,
