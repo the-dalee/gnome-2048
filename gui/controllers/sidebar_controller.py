@@ -13,9 +13,17 @@ class SidebarController(object):
         self.score_label = self._builder.get_object("score-label")
         self.engine = game_engine
         self.engine.register_for_commands(self)
-        
+        self.engine.register_for_undos(self)
+        self.engine.register_for_redos(self)
+
     def update_score(self, score):
         self.score_label.set_text(str(score))
-    
+
     def notify_command(self, command):
+        self.update_score(self.engine.score)
+
+    def notify_undo(self, job):
+        self.update_score(self.engine.score)
+
+    def notify_redo(self, job):
         self.update_score(self.engine.score)
