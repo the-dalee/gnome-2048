@@ -12,7 +12,7 @@ class SidebarController(object):
         self.widget = self._builder.get_object("sidebar")
         self.score_label = self._builder.get_object("score-label")
         self.engine = game_engine
-        self.engine.register(self)
+        self.engine.register_for_commands(self)
         
     def update_score(self, score):
         self.score_label.set_text(str(score))

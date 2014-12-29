@@ -52,7 +52,7 @@ class MainWindowController(object):
         self._builder.connect_signals(handlers)
 
         self.engine = game_engine
-        self.engine.register(self)
+        self.engine.register_for_commands(self)
 
     def undo_clicked(self, args):
         self.engine.undo()

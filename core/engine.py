@@ -6,38 +6,36 @@ from core.model.tile import Tile
 from core.model.commands.board import AddTile, MoveTile, MergeTile
 from core.model.jobs.job import Job
 from core.model.commands.engine import SetState, AddScore
+from core.game_observable import GameObservable
 
 
-class GameEngine(object):
-    command_observers = []
+class GameEngine(GameObservable):
     undo_stack = []
     redo_stack = []
     state = None
     score = 0
 
     def __init__(self):
+        super(GameEngine, self).__init__()
         self.restart()
         self.undo_stack = list()
         self.redo_stack = list()
-        self.command_observers = list()
         self.score = 0
-
-    def register(self, observer):
-        self.command_observers.append(observer)
 
     def execute_command(self, command):
         command.execute()
-        for observer in self.command_observers:
-            observer.notify_command(command)
+        self.notify_command_observers(command)
 
     def execute(self, job):
         self.undo_stack.append(job)
         self.redo_stack.clear()
+        self.notify_job_observers(job)
 
     def undo(self):
         if self.undo_stack:
             job = self.undo_stack.pop()
             job.undo()
+            self.notify_undo_observers(job)
             self.redo_stack.append(job)
         else:
             print(_("Undo stack empty"))
@@ -46,6 +44,7 @@ class GameEngine(object):
         if self.redo_stack:
             job = self.redo_stack.pop()
             job.execute()
+            self.notify_redo_observers(job)
             self.undo_stack.append(job)
         else:
             print(_("Redo stack empty"))

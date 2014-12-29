@@ -11,7 +11,7 @@ class BoardController(object):
         self._builder.add_from_file(glade_file)
 
         self.engine = game_engine
-        self.engine.register(self)
+        self.engine.register_for_commands(self)
 
         self.widget = self._builder.get_object("board")
 
