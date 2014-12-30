@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-2048\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-09 20:29+0200\n"
+"POT-Creation-Date: 2014-12-30 02:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,81 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: gui/controllers/gmenu_controller.py:8
+#: gui/views/about.glade:10
+msgid "Copyright © 2014 Damian Lippok"
+msgstr ""
+
+#: gui/views/about.glade:11
+msgid ""
+"The MIT License (MIT)\n"
+"\n"
+"Copyright (c) 2014 Damian Lippok\n"
+"\n"
+"Permission is hereby granted, free of charge, to any person obtaining a "
+"copy\n"
+"of this software and associated documentation files (the \"Software\"), to "
+"deal\n"
+"in the Software without restriction, including without limitation the "
+"rights\n"
+"to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n"
+"copies of the Software, and to permit persons to whom the Software is\n"
+"furnished to do so, subject to the following conditions:\n"
+"\n"
+"The above copyright notice and this permission notice shall be included in\n"
+"all copies or substantial portions of the Software.\n"
+"\n"
+"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS "
+"OR\n"
+"IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n"
+"FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n"
+"AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n"
+"LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING "
+"FROM,\n"
+"OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n"
+"THE SOFTWARE."
+msgstr ""
+
+#: gui/views/main.glade:8
+msgid "Gnome 2048"
+msgstr ""
+
+#: gui/views/main.glade:22
+msgid "New game"
+msgstr ""
+
+#: gui/views/main.glade:38
+msgid "Undo"
+msgstr ""
+
+#: gui/views/main.glade:48
+msgid "Redo"
+msgstr ""
+
+#: gui/views/sidebar.glade:19
+msgid "Score"
+msgstr ""
+
+#: gui/views/theme_selection.glade:20 gui/controllers/gmenu_controller.py:8
+msgid "Select theme"
+msgstr ""
+
+#: gui/views/theme_selection.glade:151
+msgid "Details"
+msgstr ""
+
+#: gui/controllers/gmenu_controller.py:11
 msgid "About Gnome 2048"
 msgstr ""
 
-#: gui/controllers/gmenu_controller.py:9
+#: gui/controllers/gmenu_controller.py:12
 msgid "Quit"
 msgstr ""
 
-#: gui/controllers/main_window_controller.py:174
+#: gui/controllers/main_window_controller.py:90
 msgid "Game over"
 msgstr ""
 
-#: gui/controllers/main_window_controller.py:177
+#: gui/controllers/main_window_controller.py:93
 msgid "You won"
 msgstr ""
 
@@ -67,7 +129,12 @@ msgstr ""
 msgid "Remove tile at (%(x)i, %(y)i)"
 msgstr ""
 
-#: core/model/commands/engine.py:24
+#: core/model/commands/engine.py:21
+#, python-format
+msgid "Add %(score)i points"
+msgstr ""
+
+#: core/model/commands/engine.py:43
 #, python-format
 msgid "Set game state to %(state)s"
 msgstr ""
@@ -76,93 +143,30 @@ msgstr ""
 msgid "Undo stack empty"
 msgstr ""
 
-#: core/engine.py:49
+#: core/engine.py:50
 msgid "Redo stack empty"
 msgstr ""
 
-#: core/engine.py:59
+#: core/engine.py:63
 msgid "The game is over"
 msgstr ""
 
-#: core/engine.py:74
+#: core/engine.py:78
 msgid "Move left"
 msgstr ""
 
-#: core/engine.py:76
+#: core/engine.py:80
 msgid "Move right"
 msgstr ""
 
-#: core/engine.py:78
+#: core/engine.py:82
 msgid "Move up"
 msgstr ""
 
-#: core/engine.py:80
+#: core/engine.py:84
 msgid "Move down"
 msgstr ""
 
-#: core/engine.py:82
+#: core/engine.py:86
 msgid "Unknown direction"
-msgstr ""
-
-#: resources/gui/about.glade:10
-msgid "Copyright © 2014 Damian Lippok"
-msgstr ""
-
-#: resources/gui/about.glade:11
-msgid ""
-"The MIT License (MIT)\n"
-"\n"
-"Copyright (c) 2014 Damian Lippok\n"
-"\n"
-"Permission is hereby granted, free of charge, to any person obtaining a "
-"copy\n"
-"of this software and associated documentation files (the \"Software\"), to "
-"deal\n"
-"in the Software without restriction, including without limitation the "
-"rights\n"
-"to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n"
-"copies of the Software, and to permit persons to whom the Software is\n"
-"furnished to do so, subject to the following conditions:\n"
-"\n"
-"The above copyright notice and this permission notice shall be included in\n"
-"all copies or substantial portions of the Software.\n"
-"\n"
-"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS "
-"OR\n"
-"IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n"
-"FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n"
-"AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n"
-"LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING "
-"FROM,\n"
-"OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN\n"
-"THE SOFTWARE."
-msgstr ""
-
-#: resources/gui/main.glade:8
-msgid "Gnome 2048"
-msgstr ""
-
-#: resources/gui/main.glade:27
-msgid "New game"
-msgstr ""
-
-#: resources/gui/main.glade:51
-msgid "Undo"
-msgstr ""
-
-#: resources/gui/main.glade:65
-msgid "Redo"
-msgstr ""
-
-#: resources/gui/main.glade:89
-msgctxt "Application title"
-msgid "Gnome 2048"
-msgstr ""
-
-#: resources/gui/main.glade:114
-msgid "Close"
-msgstr ""
-
-#: resources/gui/theme_selection.glade:16
-msgid "Select theme"
 msgstr ""
