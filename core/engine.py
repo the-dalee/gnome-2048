@@ -52,7 +52,8 @@ class GameEngine(GameObservable):
     def restart(self):
         self.board = Board()
         self.state = GameState.Pending
-        self.points = 0
+        self.score = 0
+        self.notify_reset_observers()
 
     def move(self, direction):
         if (not (self.state == GameState.Pending

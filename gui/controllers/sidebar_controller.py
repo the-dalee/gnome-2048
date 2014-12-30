@@ -27,3 +27,6 @@ class SidebarController(object):
 
     def notify_redo(self, job):
         self.update_score(self.engine.score)
+
+    def notify_reset(self):
+        self.update_score(self.engine.score)
