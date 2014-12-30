@@ -36,6 +36,9 @@ class MainWindowController(object):
         self.msgOverlayLabel.size_request()
         self.msgOverlay.add_overlay(self.msgOverlayLabel)#
         
+        self.button_undo = self._builder.get_object("button_undo")
+        self.button_redo = self._builder.get_object("button_redo")
+        
         self.board_box = self._builder.get_object("board_box")
         self.board_box.add(self.board.widget)
         self.board_box.add(self.sidebar.widget)
@@ -53,6 +56,10 @@ class MainWindowController(object):
 
         self.engine = game_engine
         self.engine.register_for_commands(self)
+        self.engine.register_for_undos(self)
+        self.engine.register_for_redos(self)
+        self.engine.register_for_reset(self)
+        self.engine.register_for_jobs(self)
 
     def undo_clicked(self, args):
         self.engine.undo()
@@ -127,3 +134,26 @@ class MainWindowController(object):
         data.width = width
         data.height = height
         return True
+
+    def set_undo_redo_buttons_sensitivity(self):
+        if(self.engine.undo_stack):
+            self.button_undo.set_sensitive(True)
+        else:
+            self.button_undo.set_sensitive(False)
+
+        if(self.engine.redo_stack):
+            self.button_redo.set_sensitive(True)
+        else:
+            self.button_redo.set_sensitive(False)
+
+    def notify_job(self, job):
+        self.set_undo_redo_buttons_sensitivity()
+
+    def notify_undo(self, job):
+        self.set_undo_redo_buttons_sensitivity()
+
+    def notify_redo(self, job):
+        self.set_undo_redo_buttons_sensitivity()
+
+    def notify_reset(self):
+        self.set_undo_redo_buttons_sensitivity()

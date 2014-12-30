@@ -35,8 +35,8 @@ class GameEngine(GameObservable):
         if self.undo_stack:
             job = self.undo_stack.pop()
             job.undo()
-            self.notify_undo_observers(job)
             self.redo_stack.append(job)
+            self.notify_undo_observers(job)
         else:
             print(_("Undo stack empty"))
 
@@ -44,8 +44,8 @@ class GameEngine(GameObservable):
         if self.redo_stack:
             job = self.redo_stack.pop()
             job.execute()
-            self.notify_redo_observers(job)
             self.undo_stack.append(job)
+            self.notify_redo_observers(job)
         else:
             print(_("Redo stack empty"))
 
@@ -144,6 +144,7 @@ class GameEngine(GameObservable):
             tile = self.create_random_tile()
             add_second = AddTile(self.board, second_empty, tile)
             self.execute_command(add_second)
+        self.notify_reset_observers()
 
     def is_game_over(self):
         if not self.board.is_full():
