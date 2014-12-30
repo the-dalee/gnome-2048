@@ -121,7 +121,7 @@ GtkWindow
 	color: #000000;
 	font-size: 55px;
 	background: #eee4da;
-	border-radius: 0px 0px 3px 3px; 
+	border-radius: 0px 0px 6px 6px; 
 }
 
 #score-header
@@ -129,5 +129,5 @@ GtkWindow
 	color: #f9f6f2;
 	background: #f67c5f;
 	font-size: 35px;
-	border-radius: 3px 3px 0px 0px; 
+	border-radius: 6px 6px 0px 0px; 
 }
