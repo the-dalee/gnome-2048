@@ -53,6 +53,8 @@ class GameEngine(GameObservable):
         self.board = Board()
         self.state = GameState.Pending
         self.score = 0
+        self.undo_stack.clear()
+        self.redo_stack.clear()
         self.notify_reset_observers()
 
     def move(self, direction):
