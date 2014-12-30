@@ -15,6 +15,7 @@ class SidebarController(object):
         self.engine.register_for_commands(self)
         self.engine.register_for_undos(self)
         self.engine.register_for_redos(self)
+        self.engine.register_for_reset(self)
 
     def update_score(self, score):
         self.score_label.set_text(str(score))
