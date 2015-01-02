@@ -5,7 +5,8 @@ class GameObservable(object):
         self.undo_observers = list()
         self.redo_observers = list()
         self.reset_observers = list()
-        
+        self.timer_observers = list()
+
     def register_for_commands(self, observer):
         self.command_observers.append(observer)
 
@@ -20,6 +21,9 @@ class GameObservable(object):
 
     def register_for_reset(self, observer):
         self.reset_observers.append(observer)
+
+    def register_for_timer(self, observer):
+        self.timer_observers.append(observer)
 
     def notify_command_observers(self, command):
         for observer in self.command_observers:
@@ -40,3 +44,7 @@ class GameObservable(object):
     def notify_reset_observers(self):
         for observer in self.reset_observers:
             observer.notify_reset()
+
+    def notify_timer_observers(self, time):
+        for observer in self.timer_observers:
+            observer.notify_timer(time)

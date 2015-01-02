@@ -13,7 +13,7 @@
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkLabel" id="score-header">
-        <property name="name">score-header</property>
+        <property name="name">sidebar-header</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label" translatable="yes">Score</property>
@@ -26,7 +26,7 @@
     </child>
     <child>
       <object class="GtkLabel" id="score-label">
-        <property name="name">score-label</property>
+        <property name="name">sidebar-label</property>
         <property name="visible">True</property>
         <property name="can_focus">False</property>
         <property name="label">0</property>
@@ -35,6 +35,33 @@
         <property name="expand">False</property>
         <property name="fill">True</property>
         <property name="position">1</property>
+      </packing>
+    </child>
+      <child>
+      <object class="GtkLabel" id="time-header">
+        <property name="name">sidebar-header</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label" translatable="yes">Time</property>
+        <property name="margin_top">24</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">2</property>
+      </packing>
+    </child>
+    <child>
+      <object class="GtkLabel" id="time-label">
+        <property name="name">sidebar-label</property>
+        <property name="visible">True</property>
+        <property name="can_focus">False</property>
+        <property name="label">0</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">3</property>
       </packing>
     </child>
     <child>

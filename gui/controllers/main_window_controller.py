@@ -23,7 +23,7 @@ class MainWindowController(object):
                                         css_provider,
                                         Gtk.STYLE_PROVIDER_PRIORITY_USER)
 
-        self.window.connect("destroy", Gtk.main_quit)
+        self.window.connect("destroy", self.destroy)
         
         self.board = BoardController(game_engine)
         self.sidebar = SidebarController(game_engine)
@@ -60,6 +60,10 @@ class MainWindowController(object):
         self.engine.register_for_redos(self)
         self.engine.register_for_reset(self)
         self.engine.register_for_jobs(self)
+
+    def destroy(self, e):
+        self.engine.quit()
+        Gtk.main_quit()
 
     def undo_clicked(self, args):
         self.engine.undo()

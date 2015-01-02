@@ -7,6 +7,7 @@ from core.model.commands.board import AddTile, MoveTile, MergeTile
 from core.model.jobs.job import Job
 from core.model.commands.engine import SetState, AddScore
 from core.game_observable import GameObservable
+from core.model import timer
 
 
 class GameEngine(GameObservable):
@@ -14,13 +15,19 @@ class GameEngine(GameObservable):
     redo_stack = []
     state = None
     score = 0
+    time = 0
 
     def __init__(self):
         super(GameEngine, self).__init__()
+        self.timer = timer.Timer(lambda t: self.notify_timer_observers(t))
+        self.timer.start()
         self.restart()
         self.undo_stack = list()
         self.redo_stack = list()
         self.score = 0
+
+    def quit(self):
+        self.timer.stop()
 
     def execute_command(self, command):
         command.execute()
@@ -55,6 +62,7 @@ class GameEngine(GameObservable):
         self.score = 0
         self.undo_stack.clear()
         self.redo_stack.clear()
+        self.timer.reset()
         self.notify_reset_observers()
 
     def move(self, direction):
