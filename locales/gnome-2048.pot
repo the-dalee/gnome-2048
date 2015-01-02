@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-2048\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-30 02:24+0100\n"
+"POT-Creation-Date: 2015-01-02 02:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,6 +71,10 @@ msgstr ""
 msgid "Score"
 msgstr ""
 
+#: gui/views/sidebar.glade:45
+msgid "Time"
+msgstr ""
+
 #: gui/views/theme_selection.glade:20 gui/controllers/gmenu_controller.py:8
 msgid "Select theme"
 msgstr ""
@@ -87,11 +91,11 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: gui/controllers/main_window_controller.py:90
+#: gui/controllers/main_window_controller.py:94
 msgid "Game over"
 msgstr ""
 
-#: gui/controllers/main_window_controller.py:93
+#: gui/controllers/main_window_controller.py:97
 msgid "You won"
 msgstr ""
 
@@ -139,34 +143,34 @@ msgstr ""
 msgid "Set game state to %(state)s"
 msgstr ""
 
-#: core/engine.py:41
+#: core/engine.py:48
 msgid "Undo stack empty"
 msgstr ""
 
-#: core/engine.py:50
+#: core/engine.py:57
 msgid "Redo stack empty"
 msgstr ""
 
-#: core/engine.py:63
+#: core/engine.py:71
 msgid "The game is over"
 msgstr ""
 
-#: core/engine.py:78
+#: core/engine.py:86
 msgid "Move left"
 msgstr ""
 
-#: core/engine.py:80
+#: core/engine.py:88
 msgid "Move right"
 msgstr ""
 
-#: core/engine.py:82
+#: core/engine.py:90
 msgid "Move up"
 msgstr ""
 
-#: core/engine.py:84
+#: core/engine.py:92
 msgid "Move down"
 msgstr ""
 
-#: core/engine.py:86
+#: core/engine.py:94
 msgid "Unknown direction"
 msgstr ""
