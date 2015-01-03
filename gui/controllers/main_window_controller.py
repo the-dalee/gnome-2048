@@ -67,7 +67,6 @@ class MainWindowController(object):
 
     def destroy(self, e):
         self.engine.quit()
-        Gtk.main_quit()
 
     def undo_clicked(self, args):
         self.engine.undo()
