@@ -13,11 +13,23 @@ class SidebarController(object):
         self.score_label = self._builder.get_object("score-label")
         self.time_label = self._builder.get_object("time-label")
         self.engine = game_engine
+
+        self.visible = True
+
         self.engine.register_for_commands(self)
         self.engine.register_for_undos(self)
         self.engine.register_for_redos(self)
         self.engine.register_for_reset(self)
         self.engine.register_for_timer(self)
+
+    def set_visible(self, value):
+        self.widget.set_visible(value)
+        self._visible = value
+
+    def get_visible(self):
+        return self._visible
+
+    visible = property(get_visible, set_visible)
 
 
     def update_score(self, score):

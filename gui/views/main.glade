@@ -68,6 +68,25 @@
                 </child>
               </object>
             </child>
+            <child>
+              <object class="GtkToggleButton" id="toggle_show_sidebar">
+                <property name="visible">True</property>
+                <property name="can_focus">False</property>
+                <property name="receives_default">True</property>
+                <signal name="toggled" handler="show_sidebar_toggled" swapped="no"/>
+                <child>
+	              <object class="GtkImage" id="image1">
+	                <property name="visible">True</property>
+	                <property name="can_focus">False</property>
+                    <property name="icon_name">view-sidebar-symbolic</property>
+	              </object>
+            	</child>
+              </object>
+              <packing>
+              	<property name="pack_type">end</property>
+            	<property name="position">1</property>
+              </packing>
+            </child>
           </object>
         </child>
     <child>

@@ -28,6 +28,9 @@ class MainWindowController(object):
         self.board = BoardController(game_engine)
         self.sidebar = SidebarController(game_engine)
         
+        self.tgl_show_sidebar = self._builder.get_object("toggle_show_sidebar")
+        self.tgl_show_sidebar.set_active(self.sidebar.visible)
+        
         self.msgOverlay = self._builder.get_object("board_overlay")
         self.msgOverlayLabel = Gtk.Label()
         self.msgOverlayLabel.set_halign(Gtk.Align.FILL)
@@ -51,6 +54,7 @@ class MainWindowController(object):
             "window_state_changed": self.window_state_changed,
             "key_released": self.key_released,
             "get_overlay_child_position": self.get_overlay_child_position,
+            "show_sidebar_toggled": self.show_sidebar_toggled,
             }
         self._builder.connect_signals(handlers)
 
@@ -83,6 +87,10 @@ class MainWindowController(object):
 
     def exit_clicked(self, args):
         self.window.close()
+
+    def show_sidebar_toggled(self, sender):
+        self.sidebar.set_visible(sender.get_active())
+        self.window.queue_resize()
 
     def notify_command(self, command):
         print(command.description)
