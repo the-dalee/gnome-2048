@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-2048\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-02 02:15+0100\n"
+"POT-Creation-Date: 2015-01-13 00:43+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -55,24 +55,8 @@ msgstr ""
 msgid "Gnome 2048"
 msgstr ""
 
-#: gui/views/main.glade:22
+#: gui/views/main.glade:24
 msgid "New game"
-msgstr ""
-
-#: gui/views/main.glade:38
-msgid "Undo"
-msgstr ""
-
-#: gui/views/main.glade:48
-msgid "Redo"
-msgstr ""
-
-#: gui/views/sidebar.glade:19
-msgid "Score"
-msgstr ""
-
-#: gui/views/sidebar.glade:45
-msgid "Time"
 msgstr ""
 
 #: gui/views/theme_selection.glade:20 gui/controllers/gmenu_controller.py:8
@@ -91,12 +75,22 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: gui/controllers/main_window_controller.py:94
+#: gui/controllers/main_window_controller.py:89
 msgid "Game over"
 msgstr ""
 
-#: gui/controllers/main_window_controller.py:97
+#: gui/controllers/main_window_controller.py:92
 msgid "You won"
+msgstr ""
+
+#: gui/controllers/main_window_controller.py:175
+#, python-format
+msgid "Score: %d"
+msgstr ""
+
+#: gui/controllers/main_window_controller.py:180
+#, python-format
+msgid "Time: %d∶%02d∶%02d"
 msgstr ""
 
 #: core/model/board.py:27

@@ -6,7 +6,6 @@ from core.model.game_state import GameState
 from os import path
 from properties import Directories, Properties
 from gui.controllers.board_controller import BoardController
-from gui.controllers.sidebar_controller import SidebarController
 
 
 class MainWindowController(object):
@@ -18,6 +17,8 @@ class MainWindowController(object):
         self._builder.add_from_file(glade_file)
         self.window = self._builder.get_object("main_window")
 
+        self.headerbar = self._builder.get_object("headerbar")
+        
         context = Gtk.StyleContext()
         context.add_provider_for_screen(self.window.get_screen(),
                                         css_provider,
@@ -26,10 +27,6 @@ class MainWindowController(object):
         self.window.connect("destroy", self.destroy)
         
         self.board = BoardController(game_engine)
-        self.sidebar = SidebarController(game_engine)
-        
-        self.tgl_show_sidebar = self._builder.get_object("toggle_show_sidebar")
-        self.tgl_show_sidebar.set_active(self.sidebar.visible)
         
         self.msgOverlay = self._builder.get_object("board_overlay")
         self.msgOverlayLabel = Gtk.Label()
@@ -44,8 +41,7 @@ class MainWindowController(object):
         
         self.board_box = self._builder.get_object("board_box")
         self.board_box.add(self.board.widget)
-        self.board_box.add(self.sidebar.widget)
-
+        
         handlers = {
             "undo_clicked": self.undo_clicked,
             "redo_clicked": self.redo_clicked,
@@ -54,7 +50,6 @@ class MainWindowController(object):
             "window_state_changed": self.window_state_changed,
             "key_released": self.key_released,
             "get_overlay_child_position": self.get_overlay_child_position,
-            "show_sidebar_toggled": self.show_sidebar_toggled,
             }
         self._builder.connect_signals(handlers)
 
@@ -64,6 +59,8 @@ class MainWindowController(object):
         self.engine.register_for_redos(self)
         self.engine.register_for_reset(self)
         self.engine.register_for_jobs(self)
+        self.engine.register_for_timer(self)
+        
 
     def destroy(self, e):
         self.engine.quit()
@@ -86,15 +83,6 @@ class MainWindowController(object):
 
     def exit_clicked(self, args):
         self.window.close()
-
-    def show_sidebar_toggled(self, sender):
-        self.sidebar.set_visible(sender.get_active())
-        self.window.queue_resize()
-
-    def notify_command(self, command):
-        print(command.description)
-        if isinstance(command, SetState):
-            self.show_hide_message()
 
     def show_hide_message(self):
         if self.engine.state == GameState.Lost:
@@ -160,11 +148,33 @@ class MainWindowController(object):
     def notify_job(self, job):
         self.set_undo_redo_buttons_sensitivity()
 
+    def notify_command(self, command):
+        print(command.description)
+        if isinstance(command, SetState):
+            self.show_hide_message()
+        self.update_score(self.engine.score)
+
     def notify_undo(self, job):
         self.set_undo_redo_buttons_sensitivity()
+        self.update_score(self.engine.score)
 
     def notify_redo(self, job):
         self.set_undo_redo_buttons_sensitivity()
+        self.update_score(self.engine.score)
 
     def notify_reset(self):
         self.set_undo_redo_buttons_sensitivity()
+        self.update_score(self.engine.score)
+        self.update_time(0)
+
+    def notify_timer(self, time):
+        self.set_undo_redo_buttons_sensitivity()
+        self.update_time(time)
+
+    def update_score(self, score):
+        self.headerbar.set_title(_("Score: %d") % (score,))
+
+    def update_time(self, time):
+        m, s = divmod(time, 60)
+        h, m = divmod(m, 60)
+        self.headerbar.set_subtitle(_("Time: %d∶%02d∶%02d") % (h, m, s))

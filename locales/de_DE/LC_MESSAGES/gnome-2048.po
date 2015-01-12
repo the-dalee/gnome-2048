@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-2048\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-02 02:15+0100\n"
-"PO-Revision-Date: 2015-01-02 02:15+0100\n"
+"POT-Creation-Date: 2015-01-13 00:43+0100\n"
+"PO-Revision-Date: 2015-01-13 00:44+0100\n"
 "Last-Translator: Damian Lippok <mail.dalee@gmail.com>\n"
 "Language-Team: Deutsch <>\n"
 "Language: de\n"
@@ -82,25 +82,9 @@ msgstr ""
 msgid "Gnome 2048"
 msgstr "Gnome 2048"
 
-#: gui/views/main.glade:22
+#: gui/views/main.glade:24
 msgid "New game"
 msgstr "Neues Spiel"
-
-#: gui/views/main.glade:38
-msgid "Undo"
-msgstr "Rückgängig"
-
-#: gui/views/main.glade:48
-msgid "Redo"
-msgstr "Wiederholen"
-
-#: gui/views/sidebar.glade:19
-msgid "Score"
-msgstr "Punkte"
-
-#: gui/views/sidebar.glade:45
-msgid "Time"
-msgstr "Zeit"
 
 #: gui/views/theme_selection.glade:20 gui/controllers/gmenu_controller.py:8
 msgid "Select theme"
@@ -118,13 +102,23 @@ msgstr "Info zu Gnome 2048"
 msgid "Quit"
 msgstr "Beenden"
 
-#: gui/controllers/main_window_controller.py:94
+#: gui/controllers/main_window_controller.py:89
 msgid "Game over"
 msgstr "Spiel vorbei"
 
-#: gui/controllers/main_window_controller.py:97
+#: gui/controllers/main_window_controller.py:92
 msgid "You won"
 msgstr "Sie haben gewonnen"
+
+#: gui/controllers/main_window_controller.py:175
+#, python-format
+msgid "Score: %d"
+msgstr "Punkte: %d"
+
+#: gui/controllers/main_window_controller.py:180
+#, python-format
+msgid "Time: %d∶%02d∶%02d"
+msgstr "Zeit: %d∶%02d∶%02d"
 
 #: core/model/board.py:27
 #, python-format
@@ -201,6 +195,15 @@ msgstr ""
 #: core/engine.py:94
 msgid "Unknown direction"
 msgstr ""
+
+#~ msgid "Undo"
+#~ msgstr "Rückgängig"
+
+#~ msgid "Redo"
+#~ msgstr "Wiederholen"
+
+#~ msgid "Time"
+#~ msgstr "Zeit"
 
 #~ msgctxt "Application title"
 #~ msgid "Gnome 2048"

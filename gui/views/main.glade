@@ -11,11 +11,10 @@
     <signal name="key-release-event" handler="key_released" swapped="no"/>
     <signal name="window-state-event" handler="window_state_changed" swapped="no"/>
     <child type="titlebar">
-          <object class="GtkHeaderBar" id="toolbar1">
+          <object class="GtkHeaderBar" id="headerbar">
             <property name="visible">True</property>
             <property name="can_focus">False</property>
             <property name="show-close-button">True</property>
-            <property name="title">Gnome 2048</property>
             <property name="height_request">47</property>
             <child>
               <object class="GtkButton" id="button_reset">
@@ -64,25 +63,6 @@
             	</style>
               </object>    
             </child>
-            
-            <child>
-              <object class="GtkToggleButton" id="toggle_show_sidebar">
-                <property name="visible">True</property>
-                <property name="can_focus">False</property>
-                <property name="receives_default">True</property>
-                <signal name="toggled" handler="show_sidebar_toggled" swapped="no"/>
-                <child>
-	              <object class="GtkImage" id="image1">
-	                <property name="visible">True</property>
-	                <property name="can_focus">False</property>
-                    <property name="icon_name">view-sidebar-symbolic</property>
-	              </object>
-            	</child>
-              </object>
-              <packing>
-              	<property name="pack_type">end</property>
-              </packing>
-            </child>
           </object>
         </child>
     <child>
@@ -95,9 +75,6 @@
 			    <property name="visible">True</property>
 			    <property name="can_focus">False</property>
 			    <property name="orientation">horizontal</property>
-				<child>
-			      <placeholder/>
-			    </child>
 			    <child>
 			      <placeholder/>
 			    </child>
