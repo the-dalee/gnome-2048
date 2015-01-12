@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: gnome-2048\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-13 00:43+0100\n"
+"POT-Creation-Date: 2015-01-13 00:51+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -56,7 +56,7 @@ msgid "Gnome 2048"
 msgstr ""
 
 #: gui/views/main.glade:24
-msgid "New game"
+msgid "_New game"
 msgstr ""
 
 #: gui/views/theme_selection.glade:20 gui/controllers/gmenu_controller.py:8
